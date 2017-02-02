@@ -9,7 +9,7 @@ acs.table(x, field)
 \arguments{
 \item{x}{data.frame or similar with data filtered to relevant rows}
 
-\item{field.name}{the name to the field to tabulate}
+\item{field}{name of the field to tabulate}
 }
 \value{
 table of weighted counts of the values of field in x

@@ -1,5 +1,5 @@
 Package: PUMSutils
-Title: Computes Point Estimates and Standard Errors on the ACS PUMS Data.
+Title: Computes Point Estimates and Standard Errors on the ACS PUMS Data
 Version: 0.0.0.9000
 Authors@R: person("David", "Thaler", email = "davidthaler@gmail.com", role = c("aut", "cre"))
 Description: PUMSutils computes point estimates and standard errors for counts,
@@ -7,6 +7,9 @@ Description: PUMSutils computes point estimates and standard errors for counts,
     for quantiles and tables.
 Depends:
     R (>= 3.3.0)
+Imports: 
+    stringr,
+    Hmisc
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

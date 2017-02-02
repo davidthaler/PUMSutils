@@ -3,7 +3,7 @@
 #' Computes a table for a field in the ACS PUMS data, using the sample weights.
 #' 
 #' @param x data.frame or similar with data filtered to relevant rows
-#' @param field.name the name to the field to tabulate
+#' @param field name of the field to tabulate
 #' 
 #' @return table of weighted counts of the values of field in x
 #' 
