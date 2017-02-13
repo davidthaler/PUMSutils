@@ -4,8 +4,11 @@
 \name{wa.house}
 \alias{wa.house}
 \title{wa.house}
-\format{A data frame with 83 variables:
+\format{A data frame with 86 variables:
 \describe{
+\item{GRNTP}{monthly gross rent}
+\item{HINCP}{monthly household income}
+\item{NP}{number of persons in household}
 \item{VACS}{vacancy status: NA=not vacant, 1=for rent, 3=for sale...for others, see reference}
 \item{TEN}{tenure status: NA=vacant, 1=owned free and clear, 2=owned with mortgage, 3=rented, 4=occupied w/o rent}
 \item{WGTP}{expansion weight, the number of household in the population represented by this row}
@@ -17,11 +20,13 @@ wa.house
 \description{
 Parital 2015 ACS PUMS housing data for Washington State.
 Data has 32821 rows (all rows), but only 83 columns.
-Included variables are VACS, TEN, the expansion weight (WGTP), 
-and the 80 replicate weights.
+Included variables are GRNTP, HINCP, NP, VACS, TEN, 
+the expansion weight (WGTP), and the 80 replicate weights.
 VACS and TEN are the only variables used in the ACS PUMS estimates 
 for user verification, and the expansion weights and replicate weights 
 are needed to compute point estimates and standard errors.
+The other variables are actual numbers (not categorical) 
+and are used in tests and vignettes.
 }
 \references{
 2015 ACS PUMS Data Dictionary \url{http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html}
