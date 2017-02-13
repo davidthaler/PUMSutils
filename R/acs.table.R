@@ -11,5 +11,5 @@
 #' 
 acs.table <- function(x, field){
   wt.name <- get.weight(x)
-  Hmisc::wtd.table(x[[field]], weights=x[[wt.name]])
+  Hmisc::wtd.table(x[[field]], weights=x[[wt.name]], type='table')
 }
