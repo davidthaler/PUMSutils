@@ -28,9 +28,9 @@
 #' 
 #' @format A data frame with 86 variables:
 #' \describe{
+#' \item{NP}{number of persons in household}
 #' \item{GRNTP}{monthly gross rent}
 #' \item{HINCP}{monthly household income}
-#' \item{NP}{number of persons in household}
 #' \item{VACS}{vacancy status: NA=not vacant, 1=for rent, 3=for sale...for others, see reference}
 #' \item{TEN}{tenure status: NA=vacant, 1=owned free and clear, 2=owned with mortgage, 3=rented, 4=occupied w/o rent}
 #' \item{WGTP}{expansion weight, the number of household in the population represented by this row}
