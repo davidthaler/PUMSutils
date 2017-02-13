@@ -81,38 +81,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Here there are 2 characteristics shown, total housing units and the number of units rented for cash. The column <code>pums_est_15</code> has point estimates of these characteristics. The second column, called <code>pums_se_15</code>, has standard errors. The last column, <code>pums_moe_15</code>, is for a 90% confidence interval, so it is just 1.645 * <code>pums_se_15</code>.</p>
 <p>If we were not using <code>PUMSutils</code>, we would compute point estimates like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sum the weights to estimate a count</span>
-<span class="kw">sum</span>(wa.house$WGTP)</code></pre></div>
-<pre><code>## [1] 2991584</code></pre>
+<span class="kw">sum</span>(wa.house$WGTP)
+## [1] 2991584</code></pre></div>
 <p>Proportions, various statistics and standard errors can also be computed, but the calculations are more involved. The <code>PUMSutils</code> package simplifies these calculations.</p>
 </div>
 <div id="pumsutils" class="section level2">
 <h2>PUMSutils</h2>
 <p>Using <code>PUMSutils</code> the above example looks like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">estimate</span>(wa.house)</code></pre></div>
-<pre><code>## [1] 2991584</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">estimate</span>(wa.house)
+## [1] 2991584</code></pre></div>
 <p>In this case, there is no real difference. Computing a standard error using the weight replicates is more involved. See the PUMS technical documentation for details. Using <code>PUMSutils</code> the standard errors are computed with a function <code>se.estimate</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">se.estimate</span>(wa.house)</code></pre></div>
-<pre><code>## [1] 185.9456</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">se.estimate</span>(wa.house)
+## [1] 185.9456</code></pre></div>
 <p>The value given above in <code>wa.gold</code> for <code>pums_se_15</code> was 186. To get estimates for the number of rentals, we first filter the data. I like to use dplyr for this kind of thing.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">estimate</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>))</code></pre></div>
-<pre><code>## [1] 984203</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">estimate</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>))
+## [1] 984203</code></pre></div>
 <p>And we do likewise for standard errors:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">se.estimate</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>))</code></pre></div>
-<pre><code>## [1] 10444.28</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">se.estimate</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>))
+## [1] 10444.28</code></pre></div>
 <p>Both values match (or round to) those shown in the second line of <code>wa.gold</code> above.</p>
 </div>
 <div id="other-statistics" class="section level2">
 <h2>Other statistics</h2>
 <p>Since the PUMS data is a weighted sample, every calculation on it requires using sample weights. The <code>PUMSutils</code> package has functions for computing weighted means, quantiles and tables, and for computing proportions and their standard errors. Here we compute the fraction of Washington State housing units that are rented for cash (TEN=3), again using <code>dplyr</code> for the filtering.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">proportion</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>), wa.house)</code></pre></div>
-<pre><code>## [1] 0.3289906</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">proportion</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>), wa.house)
+## [1] 0.3289906</code></pre></div>
 <p>About 1 in 3 Washington State housing units is a rental. Standard errors for the proportion are coomputed using <code>se.proportion</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">se.proportion</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>), wa.house)</code></pre></div>
-<pre><code>## [1] 0.003493633</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">se.proportion</span>(<span class="kw">filter</span>(wa.house, TEN==<span class="dv">3</span>), wa.house)
+## [1] 0.003493633</code></pre></div>
 <p>The functions for means, quantiles and table in <code>PUMSutils</code> are prepended with <code>acs</code> to avoid name clashes. Here we compute a table of housing units by tenure type:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">acs.table</span>(wa.house, <span class="st">'TEN'</span>)</code></pre></div>
-<pre><code>##       1       2       3       4 
-## 1170568  534591  984203   39214</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">acs.table</span>(wa.house, <span class="st">'TEN'</span>)
+##       1       2       3       4 
+## 1170568  534591  984203   39214</code></pre></div>
 <p>Field values in the ACS PUMS data are coded as integers. In general, you will have to look at the data dictionary for the definitions. For the <code>wa.house</code> data, you can use <code>?wa.house</code> to get help for this data set. The values here are:</p>
 <ol style="list-style-type: decimal">
 <li>owned free and clear</li>
