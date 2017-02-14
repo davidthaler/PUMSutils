@@ -106,8 +106,8 @@ In general, you will have to look at the data dictionary for the definitions.
 For the `wa.house` data, you can use `?wa.house` to get help for this data set.
 The values here are:
 
-1. owned free and clear
-2. owned with mortgage
+1. owned with mortgage
+2. owned free and clear
 3. rented for cash
 4. occupied w/o payment
 

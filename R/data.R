@@ -32,7 +32,7 @@
 #' \item{GRNTP}{monthly gross rent}
 #' \item{HINCP}{monthly household income}
 #' \item{VACS}{vacancy status: NA=not vacant, 1=for rent, 3=for sale...for others, see reference}
-#' \item{TEN}{tenure status: NA=vacant, 1=owned free and clear, 2=owned with mortgage, 3=rented, 4=occupied w/o rent}
+#' \item{TEN}{tenure status: NA=vacant, 1=owned with mortgage, 2=owned with free and clear, 3=rented, 4=occupied w/o rent}
 #' \item{WGTP}{expansion weight, the number of household in the population represented by this row}
 #' \item{wgtp1..wgtp80}{80 replicate weights for computing standard errors}
 #' }

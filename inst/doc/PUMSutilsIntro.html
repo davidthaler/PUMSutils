@@ -72,7 +72,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="acs-pums-data" class="section level2">
 <h2>ACS PUMS Data</h2>
-<p>The American Community Survey (ACS) is an annual survey conducted by the U.S. Census Bureau, covering many of the same topics as the decennial census. It is a 1% sample, and it comes in 2 parts: a housing survey of household units and a population survey of people. ACS data is available in several forms. Online, you can get custom tables from <a href>American FactFinder</a>. Microdata is available through the Public Use Microdata Sample, or PUMS. This contains actual responses to the ACS, one per row. This allows essentially any query to be formed, not just those provided by AFF. However, the data is harder to work with, since every query requires doing tabulation. The <code>PUMSutils</code> package reduces this part to function calls.</p>
+<p>The American Community Survey (ACS) is an annual survey conducted by the U.S. Census Bureau, covering many of the same topics as the decennial census. It is a 1% sample, and it comes in 2 parts: a housing survey of household units and a population survey of people. ACS data is available in several forms. Online, you can get custom tables from <a href="https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t">American FactFinder</a>. Microdata is available through the Public Use Microdata Sample, or PUMS. This contains actual responses to the ACS, one per row. This allows essentially any query to be formed, not just those provided by AFF. However, the data is harder to work with, since every query requires doing tabulation. The <code>PUMSutils</code> package reduces this part to function calls.</p>
 <p>The most important thing to know about the ACS PUMS data is that it is a <em>weighted</em> sample. Each row has an expansion weight indicating the number of households or people represented by this row. In addition to the main expansion weight, there are 80 weight replicates, which are used for computing standard errors.</p>
 <p>In the <code>PUMSutils</code> package, the 2015 ACS PUMS housing records for Washington State are included as <code>wa.house</code> and Census Bureau-provided ground truth estimates for some Washington State housing characteristics are provided as <code>wa.gold</code>. Below we show part of the <code>wa.gold</code> data.</p>
 <pre><code>##                 characteristic pums_est_15 pums_se_15 pums_moe_15
@@ -115,8 +115,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 1170568  534591  984203   39214</code></pre></div>
 <p>Field values in the ACS PUMS data are coded as integers. In general, you will have to look at the data dictionary for the definitions. For the <code>wa.house</code> data, you can use <code>?wa.house</code> to get help for this data set. The values here are:</p>
 <ol style="list-style-type: decimal">
-<li>owned free and clear</li>
 <li>owned with mortgage</li>
+<li>owned free and clear</li>
 <li>rented for cash</li>
 <li>occupied w/o payment</li>
 </ol>
