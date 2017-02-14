@@ -7,13 +7,14 @@ Description: PUMSutils computes point estimates and standard errors for counts,
     for quantiles and tables.
 Depends:
     R (>= 3.3.0)
-Imports: 
+Imports:
     stringr,
     Hmisc
-Suggests: 
+Suggests:
     dplyr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
 License: GPL-3
 Encoding: UTF-8
