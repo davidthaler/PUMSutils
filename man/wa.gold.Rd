@@ -3,7 +3,7 @@
 \docType{data}
 \name{wa.gold}
 \alias{wa.gold}
-\title{wa.gold}
+\title{Ground Truth for 2015 ACS Washington Housing Data}
 \format{A data frame with 4 variables: 
 \describe{
 \item{characteristic}{name of estimated characteristic in 2015 ACS}

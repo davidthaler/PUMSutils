@@ -1,4 +1,4 @@
-#' wa.gold
+#' Ground Truth for 2015 ACS Washington Housing Data
 #' 
 #' 2015 ACS PUMS ground truth point estimates and standard errors for 12 housing characteristics for Washington State.
 #' 
@@ -14,7 +14,7 @@
 #' \url{http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html} {PUMS Estimates for User Verification}
 'wa.gold'
 
-#' wa.house
+#' 2015 ACS Washington Housing Data
 #' 
 #' Parital 2015 ACS PUMS housing data for Washington State.
 #' Data has 32821 rows (all rows), but only 83 columns.
