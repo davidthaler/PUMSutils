@@ -52,4 +52,3 @@ The [ACS PUMS technical documentation page](http://www.census.gov/programs-surve
 
 Feel free to raise an issue if you find a bug, or a feature request.
 You are also welcome to raise a pull request if you fix a bug or have new functionality that you think should be included.
-
