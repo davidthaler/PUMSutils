@@ -67,13 +67,14 @@ To get estimates for the number of rentals, we first filter the data.
 I like to use dplyr for this kind of thing.
 
 ```{r rentals}
-estimate(filter(wa.house, TEN==3))
+rentals <- filter(wa.house, TEN==3)
+estimate(rentals)
 ```
 
 And we do likewise for standard errors:
 
 ```{r se.rentals}
-se.estimate(filter(wa.house, TEN==3))
+se.estimate(rentals)
 ```
 
 Both values match (or round to) those shown in the second line of `wa.gold` above.
@@ -84,14 +85,14 @@ Since the PUMS data is a weighted sample, every calculation on it requires using
 Here we compute the fraction of Washington State housing units that are rented for cash (TEN=3), again using `dplyr` for the filtering.
 
 ```{r prop}
-proportion(filter(wa.house, TEN==3), wa.house)
+proportion(rentals, wa.house)
 ```
 
 About 1 in 3 Washington State housing units is a rental. 
 Standard errors for the proportion are coomputed using `se.proportion`.
 
 ```{r se.prop}
-se.proportion(filter(wa.house, TEN==3), wa.house)
+se.proportion(rentals, wa.house)
 ```
 
 The functions for means, quantiles and table in `PUMSutils` are prepended with `acs` to avoid name clashes. 
@@ -103,6 +104,7 @@ acs.table(wa.house, 'TEN')
 
 Field values in the ACS PUMS data are coded as integers. 
 In general, you will have to look at the data dictionary for the definitions.
+It is on the Census Bureau's [technical documentation page](http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html).
 For the `wa.house` data, you can use `?wa.house` to get help for this data set.
 The values here are:
 
