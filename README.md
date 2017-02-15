@@ -10,7 +10,7 @@ It has functions for computing estimates and standard errors for counts, proport
 ### Usage
 
 The `PUMSutils` package includes a sample data set called `wa.house`. 
-Its documentation is available in R. With the package loaded, use `?wa.house`.
+Its documentation is available in R with `?wa.house`.
 We compute some statistics about Washington State rental housing using this data and the functions in `PUMSutils` below.
     
 To get an estimate of a count or total:
@@ -50,5 +50,5 @@ The [ACS PUMS technical documentation page](http://www.census.gov/programs-surve
 
 ### Contributing
 
-Feel free to raise an issue if you find a bug, or a feature request.
-You are also welcome to raise a pull request if you fix a bug or have new functionality that you think should be included.
+Feel free to raise an issue if you find a bug, or have a feature request.
+Ppull requests are also welcome if you fix a bug or have new functionality that you think should be included.
