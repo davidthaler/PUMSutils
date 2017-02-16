@@ -42,6 +42,14 @@ se.proportion(vacant, all.rentals)
 
 For other functions, see the package docs.
 
+### Installation
+
+This package can be installed from github using devtools:    
+
+```
+devtools::install_github('davidthaler/PUMSutils')
+```
+
 ### References
 
 See the [PUMS data dictionary](http://www2.census.gov/programs-surveys/acs/tech_docs/pums/data_dict/PUMSDataDict15.txt) for field definitions.
