@@ -25,7 +25,7 @@ acs.median <- function(x, field){
 #' 
 #' @export
 #' 
-acs.quantile <- function(x, field, probs=c(0, 0.25, 0.5, 0.75, 1)){
+acs.quantile <- function(x, field, probs=c(0.1, 0.25, 0.5, 0.75, 0.9)){
   wt.field <- get.weight(x)
   Hmisc::wtd.quantile(x[[field]], weights=x[[wt.field]], probs=probs)
 }
