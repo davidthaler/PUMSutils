@@ -17,4 +17,3 @@ table of weighted counts of the values of field in x
 \description{
 Computes a table for a field in the ACS PUMS data, using the sample weights.
 }
-

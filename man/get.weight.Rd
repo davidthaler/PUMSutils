@@ -20,4 +20,3 @@ Extracts an expansion weight or weight replicate from either ACS housing
 or population data, regardless of case (which varies).
 Fails with error if the requested weight is not present.
 }
-

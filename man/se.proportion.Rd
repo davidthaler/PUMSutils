@@ -22,4 +22,3 @@ using direct estimation method involving the replicate weights.
 \references{
 \url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2013_PUMS_README.pdf}
 }
-

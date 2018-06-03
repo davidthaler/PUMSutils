@@ -17,4 +17,3 @@ median for a field in the data
 \description{
 Estimates the median of a field in the ACS PUMS data, using the sample weights.
 }
-

@@ -21,24 +21,23 @@ The most important thing to know about the ACS PUMS data is that it is a *weight
 Each row has an expansion weight indicating the number of households or people represented by this row.
 In addition to the main expansion weight, there are 80 weight replicates, which are used for computing standard errors.
 
-In the `PUMSutils` package, the 2015 ACS PUMS housing records for Washington State are included as `wa.house` and Census Bureau-provided ground truth estimates  for some Washington State housing characteristics are provided as `wa.gold`. 
+In the `PUMSutils` package, the 2016 ACS PUMS housing records for Washington State are included as `wa.house16` and Census Bureau-provided ground truth estimates  for some Washington State housing characteristics are provided as `wa.gold16`. 
 Below we show part of the `wa.gold` data.
 
 ```{r gold, echo=FALSE}
 # Ground truth for Washington State
-wa.gold[c(1, 7),]
+wa.gold16[c(1, 7),]
 ```
 
 Here there are 2 characteristics shown, total housing units and the number of units rented for cash.
-The column `pums_est_15` has point estimates of these characteristics.
-The second column, called `pums_se_15`, has standard errors.
-The last column, `pums_moe_15`, is for a 90% confidence interval, so it is just 1.645 * `pums_se_15`.
+The column `pums_est_16` has point estimates of these characteristics.
+The second column, called `pums_se_16`, has standard errors.
 
 If we were not using `PUMSutils`, we would compute point estimates like this:
 
 ```{r noPUMSutils}
 # Sum the weights to estimate a count
-sum(wa.house$WGTP)
+sum(wa.house16$WGTP)
 ```
 
 Proportions, various statistics and standard errors can also be computed, 
@@ -50,7 +49,7 @@ The `PUMSutils` package simplifies these calculations.
 Using `PUMSutils` the above example looks like this:
 
 ```{r estimate}
-estimate(wa.house)
+estimate(wa.house16)
 ```
 
 In this case, there is no real difference. 
@@ -59,15 +58,15 @@ See the PUMS technical documentation for details.
 Using `PUMSutils` the standard errors are computed with a function `se.estimate`.
 
 ```{r se}
-se.estimate(wa.house)
+se.estimate(wa.house16)
 ```
 
-The value given above in `wa.gold` for `pums_se_15` was 186.
+The value given above in `wa.gold16` for `pums_se_16` was 186.
 To get estimates for the number of rentals, we first filter the data.
 I like to use dplyr for this kind of thing.
 
 ```{r rentals}
-rentals <- filter(wa.house, TEN==3)
+rentals <- filter(wa.house16, TEN==3)
 estimate(rentals)
 ```
 
@@ -77,7 +76,7 @@ And we do likewise for standard errors:
 se.estimate(rentals)
 ```
 
-Both values match (or round to) those shown in the second line of `wa.gold` above.
+Both values match (or round to) those shown in the second line of `wa.gold16` above.
 
 ## Other statistics
 
@@ -85,21 +84,21 @@ Since the PUMS data is a weighted sample, every calculation on it requires using
 Here we compute the fraction of Washington State housing units that are rented for cash (TEN=3), again using `dplyr` for the filtering.
 
 ```{r prop}
-proportion(rentals, wa.house)
+proportion(rentals, wa.house16)
 ```
 
 About 1 in 3 Washington State housing units is a rental. 
 Standard errors for the proportion are coomputed using `se.proportion`.
 
 ```{r se.prop}
-se.proportion(rentals, wa.house)
+se.proportion(rentals, wa.house16)
 ```
 
 The functions for means, quantiles and table in `PUMSutils` are prepended with `acs` to avoid name clashes. 
 Here we compute a table of housing units by tenure type:
 
 ```{r table}
-acs.table(wa.house, 'TEN')
+acs.table(wa.house16, 'TEN')
 ```
 
 Field values in the ACS PUMS data are coded as integers. 

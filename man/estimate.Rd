@@ -20,4 +20,3 @@ Estimates a total of the population or sub-group in this data.
 \references{
 \url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2013_PUMS_README.pdf}
 }
-

@@ -4,7 +4,7 @@
 \alias{acs.quantile}
 \title{Quantiles for ACS PUMS Data.}
 \usage{
-acs.quantile(x, field, probs = c(0, 0.25, 0.5, 0.75, 1))
+acs.quantile(x, field, probs = c(0.1, 0.25, 0.5, 0.75, 0.9))
 }
 \arguments{
 \item{x}{data.frame or similar with data filtered to relevant rows}
@@ -19,4 +19,3 @@ a vector of quantiles for the selected field over the given data
 \description{
 Estimate a range of quantiles on the ACS PUMS Data, using sample weights.
 }
-
