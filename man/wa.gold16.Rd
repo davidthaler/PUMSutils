@@ -4,11 +4,11 @@
 \name{wa.gold16}
 \alias{wa.gold16}
 \title{Ground Truth for 2016 ACS Washington Housing Data}
-\format{A data frame with 4 variables: 
+\format{A data frame with 4 variables:
 \describe{
 \item{characteristic}{name of estimated characteristic in 2015 ACS}
-\item{pums_est_15}{point estimate of the charcteristic}
-\item{pums_se_15}{standard error of estimate}
+\item{pums_est_16}{point estimate of the charcteristic}
+\item{pums_se_16}{standard error of estimate}
 }}
 \source{
 \url{http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html} {PUMS Estimates for User Verification}

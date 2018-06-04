@@ -20,12 +20,12 @@ wa.house16
 \description{
 Parital 2016 ACS PUMS housing data for Washington State.
 Data has 33241 rows (all rows), but only 86 columns.
-Included variables are GRNTP, HINCP, NP, VACS, TEN, 
+Included variables are GRNTP, HINCP, NP, VACS, TEN,
 the expansion weight (WGTP), and the 80 replicate weights.
-VACS and TEN are the only variables used in the ACS PUMS estimates 
-for user verification, and the expansion weights and replicate weights 
+VACS and TEN are the only variables used in the ACS PUMS estimates
+for user verification, and the expansion weights and replicate weights
 are needed to compute point estimates and standard errors.
-The other variables are actual numbers (not categorical) 
+The other variables are actual numbers (not categorical)
 and are used in tests and vignettes.
 }
 \references{

@@ -8,9 +8,12 @@
 #' @return the point estimate, standard error and 90% margin of error
 #' for the size of this sample.
 #'
+#' @examples
+#' acs.line.estimate(wa.house16)
+#'
 #' @export
 #'
-line.estimate <- function(x){
+acs.line.estimate <- function(x){
   out <- list(Count=estimate(x),
               SE=se.estimate(x))
   out$MOE90 <- 1.645 * out$SE
