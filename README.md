@@ -9,14 +9,14 @@ It has functions for computing estimates and standard errors for counts, proport
 
 ### Usage
 
-The `PUMSutils` package includes a sample data set called `wa.house`. 
-Its documentation is available in R with `?wa.house`.
+The `PUMSutils` package includes a sample data set called `wa.house16`. 
+Its documentation is available in R with `?wa.house16`.
 We compute some statistics about Washington State rental housing using this data and the functions in `PUMSutils` below.
     
 To get an estimate of a count or total:
 
 ```
-rentals <- subset(wa.house, TEN==3)       # Occupied rentals
+rentals <- subset(wa.house16, TEN==3)       # Occupied rentals
 estimate(rentals)
 ```
 
@@ -29,8 +29,8 @@ se.estimate(rentals)
 To get a rental vacancy rate for Washington State:
 
 ```
-all.rentals <- subset(wa.house, TEN==3 | VACS==1)    # Occupied or vacant rentals
-vacant <- subset(wa.house, VACS==1)              # For rent
+all.rentals <- subset(wa.house16, TEN==3 | VACS==1)    # Occupied or vacant rentals
+vacant <- subset(wa.house16, VACS==1)              # For rent
 proportion(vacant, all.rentals)
 ```
 
@@ -52,7 +52,7 @@ devtools::install_github('davidthaler/PUMSutils')
 
 ### References
 
-See the [PUMS data dictionary](http://www2.census.gov/programs-surveys/acs/tech_docs/pums/data_dict/PUMSDataDict15.txt) for field definitions.
+See the [PUMS data dictionary](http://www2.census.gov/programs-surveys/acs/tech_docs/pums/data_dict/PUMSDataDict16.txt) for field definitions.
 
 The [ACS PUMS technical documentation page](http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html) has more information about using the expansion weights.
 
