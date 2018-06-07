@@ -17,11 +17,11 @@ default TRUE}
 \value{
 data frame of count, standard error of the count,
         and the margin of error of the count, over groups
-        defined by \code{"gp_var"} and the whole data.
+        defined by \code{gp_var} and the whole data.
 }
 \description{
 Collect point estimate, standard error and 90% margin-of-error for
-the count across groups defined by \code{"gp_var"} and (optionally)
+the count across groups defined by \code{gp_var} and (optionally)
 over the whole data.
 }
 \examples{
