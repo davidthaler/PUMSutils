@@ -17,7 +17,31 @@ Compute counts, standard errors and 90% margin-of-error for rented, owned and va
     wa.house16$Tenure <- acs.translate(wa.house16, 'TEN', c(1:4, NA), c('own', 'own', 'rent', 'rent', 'vacant'))    
     acs.group.estimate(wa.house16, 'Tenure')
 
+<<<<<<< HEAD
 In the PUMS data, the variable `TEN` denotes housing tenure. It is an integer-coded categorical variable. It has the levels: 1 = Owned with mortgage, 2 = Owned free and clear, 3 = Rented for cash, 4 = Occupied without rent, NA = Vacant. This description can be found at the [technical documentation](https://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html) page for the ACS. The technical documentation page also has ground-truth values for these calculations. A portion of that data, for the 2016 ACS housing data for Washington, is included in this package as `wa.gold16`. The example above corresponds to rows 1, 3, 4, and 9 in `wa.gold16`.
+||||||| merged common ancestors
+```
+all.rentals <- subset(wa.house16, TEN==3 | VACS==1)    # Occupied or vacant rentals
+vacant <- subset(wa.house16, VACS==1)              # For rent
+proportion(vacant, all.rentals)
+```
+
+And the standard error for that is:
+
+```
+se.proportion(vacant, all.rentals)
+```
+=======
+In the PUMS data, the variable `TEN` denotes housing tenure. It is an integer-coded categorical variable. It has the following levels:
+
+1. Owned with mortgage
+2. Owned without mortgage
+3. Rented for cash
+4. Occupied without rent
+NA. Vacant
+
+This description can be found at the [technical documentation](https://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html) page for the ACS. The technical documentation page also has ground-truth values for these calculations. A portion of that data, for the 2016 ACS housing data for Washington, is included in this package as `wa.gold16`. The example above corresponds to rows 1, 3, 4, and 9 in `wa.gold16`.
+>>>>>>> a79f5f17b61b6e2ff111ae2fe39907557c29b60e
 
 For other functions, see the package docs.
 
