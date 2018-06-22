@@ -4,12 +4,14 @@
 \alias{acs.median}
 \title{Median of Field in ACS PUMS Data}
 \usage{
-acs.median(x, field)
+acs.median(x, field, wt.rep.num = NULL)
 }
 \arguments{
 \item{x}{data.frame or similar with data filtered to relevant rows}
 
 \item{field}{the data field to take the median of}
+
+\item{wt.rep.num}{the weight replicate number, if a replicate weight}
 }
 \value{
 median for a field in the data

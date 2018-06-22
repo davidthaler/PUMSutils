@@ -4,7 +4,8 @@
 \alias{acs.quantile}
 \title{Quantiles for ACS PUMS Data.}
 \usage{
-acs.quantile(x, field, probs = c(0.1, 0.25, 0.5, 0.75, 0.9))
+acs.quantile(x, field, probs = c(0.1, 0.25, 0.5, 0.75, 0.9),
+  wt.rep.num = NULL)
 }
 \arguments{
 \item{x}{data.frame or similar with data filtered to relevant rows}
@@ -12,6 +13,8 @@ acs.quantile(x, field, probs = c(0.1, 0.25, 0.5, 0.75, 0.9))
 \item{field}{the data field to take the quantiles over}
 
 \item{probs}{a vector of quantiles to take}
+
+\item{wt.rep.num}{the weight replicate number, if a replicate weight}
 }
 \value{
 a vector of quantiles for the selected field over the given data
