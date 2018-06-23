@@ -2,7 +2,7 @@
 % Please edit documentation in R/estimate.R
 \name{estimate}
 \alias{estimate}
-\title{Estimate Count or Total Using ACS PUMS Data.}
+\title{Estimate count using ACS PUMS data.}
 \usage{
 estimate(x, wt.rep.num = NULL)
 }
