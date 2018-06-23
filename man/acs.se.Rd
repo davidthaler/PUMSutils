@@ -7,7 +7,8 @@
 acs.se(f)
 }
 \arguments{
-\item{f}{a function that takes a weight replicate}
+\item{f}{a function that takes a weight replicate number called wt.rep.num,
+with a default value of NULL}
 }
 \value{
 the standard error of the statistic defined by f over the data
@@ -15,11 +16,11 @@ the standard error of the statistic defined by f over the data
 \description{
 This function uses weight replicates to compute direct standard errors
 on the ACS PUMS data for any statistic.
-This function is mainly for internal use (the function signature is tricky),
+It is mainly for internal use (the function signature is tricky),
 but it can be used to compute standard errors for any statistic,
 inclding user-defined ones, so it is exported.
 The argument `f` is a function that takes only one argument,
-which is a weight replicate number from 1...80.
+called wt.rep.num, which is a weight replicate number from 1...80.
 That means that it must already be bound to any data and paramters it needs.
 It should return the value of the statistic over its data,
 based on the weight replicate number used.
@@ -28,11 +29,12 @@ See the ACS PUMS readme document referenced below for the details of
 the calculation of the direct standard errors.
 }
 \examples{
+# Ground-truth
 acs.mean(wa.house16, 'GRNTP')
 se.acs.mean(wa.house16, 'GRNTP')
 
 # using a closure
-my.closure <- function(x, field) function(n=NULL) acs.mean(x, f, n)
+my.closure <- function(x, field) function(wt.rep.num=NULL) acs.mean(x, f, n)
 f <- my.closure(wa.house16, 'GRNTP')
 f()
 acs.se(f)
