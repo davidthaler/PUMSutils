@@ -37,6 +37,11 @@
 #' f()
 #' acs.se(f)
 #'
+#' # Less-trivial example: SE of 10% quantile
+#' my.closure <- function(x, field, q) function(wt.rep.num=NULL) acs.quantile(x, field, q, wt.rep.num)
+#' f <- my.closure(wa.house16, 'GRNTP', 0.1)
+#' acs.se(f)
+#'
 #' @export
 #'
 acs.se <- function(f){

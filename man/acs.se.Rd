@@ -44,6 +44,11 @@ f <- purr::partial(acs.mean, x=wa.house16, field='GRNTP')
 f()
 acs.se(f)
 
+# Less-trivial example: SE of 10\% quantile
+my.closure <- function(x, field, q) function(wt.rep.num=NULL) acs.quantile(x, field, q, wt.rep.num)
+f <- my.closure(wa.house16, 'GRNTP', 0.1)
+acs.se(f)
+
 }
 \references{
 \url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2016_PUMS_README.pdf}
