@@ -22,7 +22,7 @@
 #' acs.line.estimate('Renters.Pct', proportion, subset(wa.house16, TEN==3), wa.house16)
 #'
 #' @export
-acs.line.estimate <- function(result.name, f, x, ...){
+line.estimate <- function(result.name, f, x, ...){
   out <- list()
   out[[result.name]] <- f(x, ...)
   out$SE <- acs.se(f, x, ...)
