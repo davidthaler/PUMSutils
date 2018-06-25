@@ -19,5 +19,5 @@
 acs.total <- function(x, field, wt.rep.num=NULL){
   wt.field <- get.weight(x, wt.rep.num)
   x.mask <- x[is.finite(x[[field]]), ]
-  sum(x.mask[wt.field] * x.mask[field])
+  sum(x.mask[[wt.field]] * as.numeric(x.mask[[field]]))
 }
