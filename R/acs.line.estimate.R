@@ -1,21 +1,31 @@
-#' Compute count statistics from ACS PUMS data.
+#' Compute an estimate and standard error from ACS PUMS data.
 #'
 #' Compute point estimate, standard error and 90% margin of error
-#' on ACS PUMS data using the replicate weights and return results on one line.
+#' of any statistic on ACS PUMS data using the direct method,
+#' involving replicate weights and return results on one line.
 #'
-#' @param x a data frame of PUMS data, filtered to the in-sample rows.
+#' @param result.name name of estimate column in result
+#' @param f a function to calculate the statistic.
+#'        It must take data and a weight replicate number called wt.rep.num
+#'        with a default value of NULL.
+#' @param x a data frame of PUMS data.
+#' @param ... other data passed to f
 #'
 #' @return the point estimate, standard error and 90% margin of error
 #' for the size of this sample.
 #'
 #' @examples
-#' acs.line.estimate(wa.house16)
+#' # Number of households in Washington State in 2016
+#' acs.line.estimate('HH.Units', estimate, wa.house16)
+#'
+#' # Fraction of Washington State households that rent for cash
+#' acs.line.estimate('Renters.Pct', proportion, subset(wa.house16, TEN==3), wa.house16)
 #'
 #' @export
-#'
-acs.line.estimate <- function(x){
-  out <- list(Count=estimate(x),
-              SE=se.estimate(x))
-  out$MOE90 <- 1.645 * out$SE
+acs.line.estimate <- function(result.name, f, x, ...){
+  out <- list()
+  out[[result.name]] <- f(x, ...)
+  out$SE <- acs.se(f, x, ...)
+  out$MoE <- 1.645 * out$SE
   as.data.frame(out)
 }
