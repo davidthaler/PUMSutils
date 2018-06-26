@@ -25,6 +25,10 @@
 #' # Total of occupied households in Washington State in 2016
 #' group.estimate('HH.Ct', estimate, wa.house16, 'TEN', drop.na.group=TRUE)
 #'
+#' # 90% household income by tenure type for Washington State in 2016
+#' group.estimate('HH.Inc90', acs.quantile, wa.house16, 'TEN',
+#'                field='HINCP', probs=0.9, drop.na.group = TRUE)
+#'
 #' @export
 group.estimate <- function(result.name, f, x, gp.var, ...,
                                drop.na.group=FALSE, include.total=TRUE){
