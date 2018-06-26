@@ -9,12 +9,14 @@
 #'
 #' @return a vector of quantiles for the selected field over the given data
 #'
+#' @importFrom Hmisc wtd.quantile
+#'
 #' @export
 #'
 acs.quantile <- function(x, field,
                          probs=c(0.1, 0.25, 0.5, 0.75, 0.9),
                          wt.rep.num=NULL){
   wt.field <- get.weight(x, wt.rep.num)
-  Hmisc::wtd.quantile(x[[field]], weights=x[[wt.field]], probs=probs)
+  wtd.quantile(x[[field]], weights=x[[wt.field]], probs=probs)
 }
 
