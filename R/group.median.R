@@ -8,7 +8,7 @@
 #' @param result.name name of estimate column in result
 #' @param gp.var name of variable in x to group data by, a string
 #' @param med.var (string) name of a numerical column in `x` to take median over
-#' @param drop.na.group drop the group where `gp.var` is NA
+#' @param drop.na.group drop the group where `gp.var` is NA; default TRUE
 #'
 #' @return data frame of median, standard error of the median,
 #'         and the margin of error of the median of `med.var`
@@ -19,7 +19,7 @@
 #' group.median(wa.house16, 'Med.HH.Inc', 'TEN', 'HINCP', drop.na.group=TRUE)
 #'
 #' @export
-group.median <- function(x,result.name, gp.var, med.var, drop.na.group){
+group.median <- function(x,result.name, gp.var, med.var, drop.na.group=TRUE){
   group.estimate(result.name, acs.median, x, gp.var, med.var,
                  drop.na.group = drop.na.group)
 }
