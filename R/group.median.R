@@ -1,7 +1,7 @@
 #' Compute weighted median of numerical column on grouped ACS PUMS data.
 #'
 #' Collect point estimate, standard error and 90% margin-of-error for
-#' any the median of `med.var` across groups defined by `gp.var` and
+#' the median of `med.var` across groups defined by `gp.var` and
 #' over the whole data.
 #'
 #' @param x a data frame of PUMS data
@@ -11,8 +11,8 @@
 #' @param drop.na.group drop the group where `gp.var` is NA
 #'
 #' @return data frame of median, standard error of the median,
-#'         and the margin of error of the median over the groups
-#'         defined by `gp.var` and for the whole data.
+#'         and the margin of error of the median of `med.var`
+#'         over the groups defined by `gp.var` and for the whole data.
 #'
 #' @examples
 #' # Median income by tenure type for Washington State in 2016
