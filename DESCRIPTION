@@ -8,10 +8,10 @@ Description: PUMSutils computes point estimates and standard errors for counts,
 Depends:
     R (>= 3.3.0)
 Imports:
+    dplyr,
     stringr,
     Hmisc
 Suggests:
-    dplyr,
     knitr,
     rmarkdown,
     testthat
