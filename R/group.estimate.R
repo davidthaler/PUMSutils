@@ -26,7 +26,6 @@
 #' group.estimate('HH.Ct', estimate, wa.house16, 'TEN', drop.na.group=TRUE)
 #'
 #' @export
-#'
 group.estimate <- function(result.name, f, x, gp.var, ...,
                                drop.na.group=FALSE, include.total=TRUE){
   if(drop.na.group){
