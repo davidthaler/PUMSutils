@@ -14,7 +14,7 @@
 #'
 #' @importFrom Hmisc wtd.mean
 #'
-#' @references \url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2013_PUMS_README.pdf}
+#' @references \url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2016_PUMS_README.pdf}
 #'
 #' @export
 #'
