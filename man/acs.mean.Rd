@@ -25,5 +25,5 @@ some ACS fields are top-coded, so their means are not correct,
 check the data dictionary or the PUMS Readme for more.
 }
 \references{
-\url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2013_PUMS_README.pdf}
+\url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2016_PUMS_README.pdf}
 }

@@ -17,9 +17,9 @@ proportion(numerator, denominator, wt.rep.num = NULL)
 The point estimate of the proportion
 }
 \description{
-Estimates a proportion from the ACS PUMS data (either housing or population) 
+Estimates a proportion from the ACS PUMS data (either housing or population)
 using the sample weights.
 }
 \references{
-\url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2013_PUMS_README.pdf}
+\url{http://www2.census.gov/programs-surveys/acs/tech_docs/pums/ACS2016_PUMS_README.pdf}
 }
