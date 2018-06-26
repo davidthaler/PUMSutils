@@ -4,7 +4,7 @@
 \alias{group.total}
 \title{Compute aggregate of numerical column on grouped ACS PUMS data.}
 \usage{
-group.total(x, result.name, gp.var, tot.var, drop.na.group)
+group.total(x, result.name, gp.var, tot.var, drop.na.group = TRUE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}
@@ -15,7 +15,7 @@ group.total(x, result.name, gp.var, tot.var, drop.na.group)
 
 \item{tot.var}{(string) name of a numerical column in `x` to aggregate}
 
-\item{drop.na.group}{drop the group where `gp.var` is NA}
+\item{drop.na.group}{drop the group where `gp.var` is NA; default TRUE}
 }
 \value{
 data frame of aggregate, standard error of the aggregate,
@@ -29,6 +29,6 @@ over the whole data.
 }
 \examples{
 # Total household population of Washington State in 2016
-group.total(x, 'HH.Pop', 'TEN', 'NP', drop.na.group=TRUE)
+group.total(wa.house16, 'HH.Pop', 'TEN', 'NP', drop.na.group=TRUE)
 
 }

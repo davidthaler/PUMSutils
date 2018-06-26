@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' # Total household population of Washington State in 2016
-#' group.total(x, 'HH.Pop', 'TEN', 'NP', drop.na.group=TRUE)
+#' group.total(wa.house16, 'HH.Pop', 'TEN', 'NP', drop.na.group=TRUE)
 #'
 #' @export
 group.total <- function(x, result.name, gp.var, tot.var, drop.na.group=TRUE){

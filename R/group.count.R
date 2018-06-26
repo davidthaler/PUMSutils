@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' # Count of occupied households by tenure type for Washington State in 2016
-#' group.count(wa.house16, 'Occ.HH', 'TEN' drop.na.group=TRUE)
+#' group.count(wa.house16, 'Occ.HH', 'TEN', drop.na.group=TRUE)
 #'
 #' @export
 group.count <- function(x, result.name, gp.var, drop.na.group=FALSE){

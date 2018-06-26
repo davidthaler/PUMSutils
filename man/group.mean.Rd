@@ -4,7 +4,7 @@
 \alias{group.mean}
 \title{Compute weighted mean of numerical column on grouped ACS PUMS data.}
 \usage{
-group.mean(x, result.name, gp.var, mean.var, drop.na.group)
+group.mean(x, result.name, gp.var, mean.var, drop.na.group = TRUE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}
@@ -15,7 +15,7 @@ group.mean(x, result.name, gp.var, mean.var, drop.na.group)
 
 \item{mean.var}{(string) name of a numerical column in `x` to average over}
 
-\item{drop.na.group}{drop the group where `gp.var` is NA}
+\item{drop.na.group}{drop the group where `gp.var` is NA; default TRUE}
 }
 \value{
 data frame of mean, standard error of the mean,

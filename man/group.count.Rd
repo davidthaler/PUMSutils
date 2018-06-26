@@ -4,7 +4,7 @@
 \alias{group.count}
 \title{Compute weighted size of groups in ACS PUMS data.}
 \usage{
-group.count(x, result.name, gp.var, drop.na.group)
+group.count(x, result.name, gp.var, drop.na.group = FALSE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}
@@ -13,7 +13,7 @@ group.count(x, result.name, gp.var, drop.na.group)
 
 \item{gp.var}{name of variable in x to group data by, a string}
 
-\item{drop.na.group}{drop the group where `gp.var` is NA}
+\item{drop.na.group}{drop the group where `gp.var` is NA; default FALSE}
 }
 \value{
 data frame of count, standard error of the count,
@@ -26,6 +26,6 @@ the size of the groups defined by `gp.var` and the whole data.
 }
 \examples{
 # Count of occupied households by tenure type for Washington State in 2016
-group.count(wa.house16, 'Occ.HH', 'TEN' drop.na.group=TRUE)
+group.count(wa.house16, 'Occ.HH', 'TEN', drop.na.group=TRUE)
 
 }

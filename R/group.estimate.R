@@ -38,10 +38,9 @@ group.estimate <- function(result.name, f, x, gp.var, ...,
   gp <- group_by_(x, gp.var)
   out <- as.data.frame(do(gp, line.estimate(result.name, f, ., ...)))
   if(include.total){
-    l <- list()
-    l[[gp.var]] <- 'All'
-    total <- cbind(l, line.estimate(result.name, f, x, ...))
-    out <- rbind(out, total)
+    le <- line.estimate(result.name, f, x, ...)
+    le[gp.var] = 'All'
+    out <- rbind(out, le)
   }
   out
 }

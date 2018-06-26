@@ -28,9 +28,9 @@ involving replicate weights and return results on one line.
 }
 \examples{
 # Number of households in Washington State in 2016
-acs.line.estimate('HH.Units', estimate, wa.house16)
+line.estimate('HH.Units', estimate, wa.house16)
 
 # Fraction of Washington State households that rent for cash
-acs.line.estimate('Renters.Pct', proportion, subset(wa.house16, TEN==3), wa.house16)
+line.estimate('Renters.Pct', proportion, subset(wa.house16, TEN==3), wa.house16)
 
 }
