@@ -4,11 +4,11 @@
 \alias{acs.se}
 \title{Compute standard errors for ACS PUMS data by the direct method}
 \usage{
-acs.se(f)
+acs.se(f, x, ...)
 }
 \arguments{
-\item{f}{a function that takes a weight replicate number called wt.rep.num,
-with a default value of NULL}
+\item{f}{a function that takes data and a weight replicate number
+called wt.rep.num with a default value of NULL}
 }
 \value{
 the standard error of the statistic defined by f over the data
@@ -16,38 +16,25 @@ the standard error of the statistic defined by f over the data
 \description{
 This function uses weight replicates to compute direct standard errors
 on the ACS PUMS data for any statistic.
-It is mainly for internal use (the function signature is tricky),
-but it can be used to compute standard errors for any statistic,
-inclding user-defined ones, so it is exported.
-The argument `f` is a function that takes only one argument,
-called wt.rep.num, which is a weight replicate number from 1...80.
-That means that it must already be bound to any data and paramters it needs.
-It should return the value of the statistic over its data,
-based on the weight replicate number used.
-See `estimate` or `proportion` for an example of how to do that.
+It can take any of the functions in PUMSUtils that produce single estimates,
+including `estimate`, `proportion`, `acs.mean`, etc.
+The function `f` must have the signature f(x, ..., wt.rep.num=NULL),
+where `x` is the data and `wt.rep.num` is 1:80 or NULL.
+If NULL, the main expansion weight is used.
+If 1:80, a replicate weight is used.
+The dots argument is passes to `f` and may be empty.
 See the ACS PUMS readme document referenced below for the details of
 the calculation of the direct standard errors.
 }
 \examples{
-# Ground-truth
-acs.mean(wa.house16, 'GRNTP')
-se.acs.mean(wa.house16, 'GRNTP')
+# Standard error of count of households in Washington State in 2016
+acs.se(estimate, wa.house16)
 
-# using a closure
-my.closure <- function(x, field) function(wt.rep.num=NULL) acs.mean(x, f, n)
-f <- my.closure(wa.house16, 'GRNTP')
-f()
-acs.se(f)
+# Standard error of median household income in Washington State in 2016
+acs.se(acs.median, wa.house16, 'HINCP')
 
-# using purr::partial
-f <- purr::partial(acs.mean, x=wa.house16, field='GRNTP')
-f()
-acs.se(f)
-
-# Less-trivial example: SE of 10\% quantile
-my.closure <- function(x, field, q) function(wt.rep.num=NULL) acs.quantile(x, field, q, wt.rep.num)
-f <- my.closure(wa.house16, 'GRNTP', 0.1)
-acs.se(f)
+# Standard error of proportion of Washington STate households that pay cash rent
+acs.se(proportion, subset(wa.house16, TEN==3), wa.house16)
 
 }
 \references{

@@ -17,11 +17,11 @@ acs.mean(x, field, wt.rep.num = NULL)
 an estimate of the mean of the data field over this data
 }
 \description{
-Estimates the mean of the data field over the population 
+Estimates the mean of the data field over the population
 represented by a sample drawn from ACS PUMS data.
 }
 \note{
-some ACS fields are top-coded, so their means are not correct, 
+some ACS fields are top-coded, so their means are not correct,
 check the data dictionary or the PUMS Readme for more.
 }
 \references{
