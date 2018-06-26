@@ -60,10 +60,10 @@ Computing a standard error using the weight replicates is more involved,
 and requires using the 80 replicate weights.
 See the PUMS technical documentation for details.
 
-Using `PUMSutils` the standard errors are computed with a function `se.estimate`.
+Using `PUMSutils` the standard errors are computed with a function `acs.se`.
 
 ```{r se}
-se.estimate(wa.house16)
+acs.se(estimate, wa.house16)
 ```
 
 The value given above in `wa.gold16` for `pums_se_16` was 675.
@@ -73,12 +73,12 @@ The PUMSUtils package contains functions for translating those to a readable for
 It also contains functions for computing statistics over groups of data.
 Here we compute totals for owned, rented and vacant housing in Washington State, using the 'TEN' field. Compare these results to the selection from `wa.gold16` above.
 
-```{r composition}
-wa.house16$Tenure <- acs.translate(wa.house16, 
+```{r group}
+wa.house16$Own.Rent <- acs.translate(wa.house16, 
                                    'TEN', 
                                    c(1:4, NA), 
                                    c('own', 'own', 'rent', 'rent', 'vacant'))   
-acs.group.estimate(wa.house16, 'Tenure')
+group.count(wa.house16, 'Tenure', 'Own.Rent')
 ```
 
 The values of the 'TEN' field are:
