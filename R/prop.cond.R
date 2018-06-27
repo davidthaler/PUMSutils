@@ -19,7 +19,7 @@
 #' prop.cond(wa.house16, TEN==3)
 #'
 #' # Fraction of Washington State renter households that have only 1 person.
-#' prop.cond(wa.house, TEN==3, NP==1)
+#' prop.cond(wa.house16, TEN==3, NP==1)
 #'
 #' # Fraction of Washington State households that are rent-burdened renters
 #' # A household is rent-burdened if it pays more than 30% of its income in rent.
