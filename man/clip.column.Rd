@@ -28,6 +28,6 @@ is named something like ">=3", which would not sort correctly as a string.
 }
 \examples{
 wa.house16$Size <- clip.column(wa.house16, 'NP', 5, '>=5')
-acs.group.estimate(wa.house16, 'Size')
+group.count(wa.house16, 'HH.Count', 'Size')
 
 }
