@@ -22,13 +22,13 @@
 #' @examples
 #' new.vals <- c('own','own','rent', 'rent', 'vacant')
 #' wa.house16$Tenure <- acs.translate(wa.house16, 'TEN', c(1:4, NA), new.vals)
-#' acs.group.estimate(wa.house16, 'Tenure')
+#' group.count(wa.house16, 'HH.Count', 'Tenure')
 #'
 #' # Strings would not be in this order
 #' in.order <- c('vacant', 'own', 'rent')
 #' wa.house16$Tenure <- acs.translate(wa.house16, 'TEN', c(1:4, NA),
 #'                                    new.vals, level.order=in.order)
-#' acs.group.estimate(wa.house16, 'Tenure')
+#' group.count(wa.house16, 'HH.Count', 'Tenure')
 #'
 #' @export
 #'
