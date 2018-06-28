@@ -10,8 +10,8 @@ line.estimate(result.name, f, x, ...)
 \item{result.name}{name of estimate column in result}
 
 \item{f}{a function to calculate the statistic.
-It must take data and a weight replicate number called wt.rep.num
-with a default value of NULL.}
+It must take data and a weight replicate number called
+\code{wt.rep.num} with a default value of NULL.}
 
 \item{x}{a data frame of PUMS data.}
 

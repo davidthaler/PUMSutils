@@ -21,7 +21,7 @@ point estimate of the proportion of population in subset
 Compute the proportion of a population in a subset defined by a list
 of conditions. The conditions are combined with a logical-and.
 The conditions should be bare expressions, not strings.
-This function uses \code{quos} from \code{rlang}.
+This function uses \code{rlang::quos}.
 }
 \examples{
 # Fraction of Washington State households that pay cash rent

@@ -13,18 +13,18 @@ group.mean(x, result.name, gp.var, mean.var, drop.na.group = TRUE)
 
 \item{gp.var}{name of variable in x to group data by, a string}
 
-\item{mean.var}{(string) name of a numerical column in `x` to average over}
+\item{mean.var}{(string) name of a numerical column in x to average over}
 
-\item{drop.na.group}{drop the group where `gp.var` is NA; default TRUE}
+\item{drop.na.group}{drop the group where \code{gp.var} is NA; default TRUE}
 }
 \value{
 data frame of mean, standard error of the mean,
-        and the margin of error of the mean of `mean.var`
-        over the groups defined by `gp.var` and for the whole data.
+        and the margin of error of the mean of \code{mean.var}
+        over the groups defined by \code{gp.var} and for the whole data.
 }
 \description{
 Collect point estimate, standard error and 90% margin-of-error for
-the mean of `mean.var` across groups defined by `gp.var` and
+the mean of \code{mean.var} across groups defined by \code{gp.var} and
 over the whole data.
 }
 \examples{

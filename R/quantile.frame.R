@@ -7,7 +7,7 @@
 #' @param x a data frame of PUMS data
 #' @param result.name name of estimate column in result
 #' @param field (string) name of a numerical field to take the quantiles over
-#' @param probs a vector of quantiles to take; decimals in [0.0, 1.0]
+#' @param probs a vector of quantiles to take; decimals in \code{[0.0, 1.0]}
 #'
 #' @return data.frame containing point estimate, standard error, and 90%
 #' margin-of-error for the selected quantiles of \code{x$field}

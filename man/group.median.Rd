@@ -13,18 +13,18 @@ group.median(x, result.name, gp.var, med.var, drop.na.group = TRUE)
 
 \item{gp.var}{name of variable in x to group data by, a string}
 
-\item{med.var}{(string) name of a numerical column in `x` to take median over}
+\item{med.var}{(string) name of a numerical column in x to take median over}
 
-\item{drop.na.group}{drop the group where `gp.var` is NA; default TRUE}
+\item{drop.na.group}{drop the group where \code{gp.var} is NA; default TRUE}
 }
 \value{
 data frame of median, standard error of the median,
-        and the margin of error of the median of `med.var`
-        over the groups defined by `gp.var` and for the whole data.
+        and the margin of error of the median of \code{med.var}
+        over the groups defined by \code{gp.var} and for the whole data.
 }
 \description{
 Collect point estimate, standard error and 90% margin-of-error for
-the median of `med.var` across groups defined by `gp.var` and
+the median of \code{med.var} across groups defined by \code{gp.var} and
 over the whole data.
 }
 \examples{

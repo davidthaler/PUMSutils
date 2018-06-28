@@ -6,13 +6,13 @@
 #'
 #' @param result.name name of estimate column in result
 #' @param f a function to calculate the statistic.
-#'        It must take data and a weight replicate number called wt.rep.num
-#'        with a default value of NULL.
+#'        It must take data and a weight replicate number called
+#'        \code{wt.rep.num} with a default value of NULL.
 #' @param x a data frame of PUMS data
 #' @param gp.var name of variable in x to group data by, a string
 #' @param ... other data passed to f
 #' @param include.total include the total across all groups, default TRUE
-#' @param drop.na.group default FALSE, drop the group where `gp.var` is NA
+#' @param drop.na.group default FALSE, drop the group where \code{gp.var} is NA
 #'
 #' @importFrom dplyr group_by_ do filter
 #'

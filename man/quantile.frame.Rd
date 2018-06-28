@@ -14,7 +14,7 @@
 
 \item{field}{(string) name of a numerical field to take the quantiles over}
 
-\item{probs}{a vector of quantiles to take; decimals in [0.0, 1.0]}
+\item{probs}{a vector of quantiles to take; decimals in \code{[0.0, 1.0]}}
 }
 \value{
 data.frame containing point estimate, standard error, and 90%

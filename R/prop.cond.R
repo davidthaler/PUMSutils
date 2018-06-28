@@ -3,7 +3,7 @@
 #' Compute the proportion of a population in a subset defined by a list
 #' of conditions. The conditions are combined with a logical-and.
 #' The conditions should be bare expressions, not strings.
-#' This function uses \code{quos} from \code{rlang}.
+#' This function uses \code{rlang::quos}.
 #'
 #' @param x data.frame or similar with data filtered to relevant rows.
 #' @param ... a list of conditions that define the subset,
