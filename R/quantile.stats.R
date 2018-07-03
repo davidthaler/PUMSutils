@@ -5,8 +5,8 @@
 #' estimating the standard errors of those quantiles.
 #'
 #' @param x a data frame of PUMS data
-#' @param result.name name of estimate column in result
 #' @param field (string) name of a numerical field to take the quantiles over
+#' @param result.name name of estimate column in result; default is \code{field}
 #' @param probs a vector of quantiles to take; decimals in \code{[0.0, 1.0]}
 #'
 #' @return data.frame containing point estimate, standard error, and 90%
@@ -17,8 +17,9 @@
 #' quantile.frame(wa.house16, 'HH.Inc', 'HINCP')
 #'
 #' @export
-quantile.frame <- function(x, result.name, field,
+quantile.stats <- function(x, field, result.name=NULL,
                            probs=c(0.1, 0.25, 0.5, 0.75, 0.9)){
+  if(is.null(result.name)) result.name <- field
   pt.est <- acs.quantile(x, field=field, probs=quantiles)
   fn <- function(n) acs.quantile(x, field=field, probs=probs, wt.rep.num=n)
   rep.ests <- sapply(1:80, fn)
