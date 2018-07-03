@@ -14,13 +14,13 @@
 #'
 #' @examples
 #' # Some quantiles of household income for Washington State in 2016
-#' quantile.frame(wa.house16, 'HH.Inc', 'HINCP')
+#' acs.quantile.stats(wa.house16, 'HINCP', 'HH.Income')
 #'
 #' @export
-quantile.stats <- function(x, field, result.name=NULL,
+acs.quantile.stats <- function(x, field, result.name=NULL,
                            probs=c(0.1, 0.25, 0.5, 0.75, 0.9)){
   if(is.null(result.name)) result.name <- field
-  pt.est <- acs.quantile(x, field=field, probs=quantiles)
+  pt.est <- acs.quantile(x, field=field, probs=probs)
   fn <- function(n) acs.quantile(x, field=field, probs=probs, wt.rep.num=n)
   rep.ests <- sapply(1:80, fn)
   SE <- sqrt((4/80) * rowSums((pt.est - rep.ests)^2))
