@@ -1,4 +1,4 @@
-#' Count number of persons in households matching a list of conditions.
+#' Count persons in households matching a list of conditions.
 #'
 #' Counts the rows in the population table, grouped by household,
 #' that match a list of conditions given as the \code{...} argument,
@@ -12,8 +12,8 @@
 #' @param ... a list of conditions that define the subset,
 #'            as bare expressions, not as strings
 #'
-#' @return a 2-column data frame with columns \code{SERIALNO} and
-#'        a result column called either \code{n} or \code{result.name}
+#' @return vector of counts of people matching (...) conditions,
+#'          should be aligned with house
 #'
 #' @importFrom dplyr quos filter count left_join
 #'

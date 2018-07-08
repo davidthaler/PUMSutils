@@ -2,7 +2,7 @@
 % Please edit documentation in R/match.count.R
 \name{match.count}
 \alias{match.count}
-\title{Count number of persons in households matching a list of conditions.}
+\title{Count persons in households matching a list of conditions.}
 \usage{
 match.count(house, pop, ...)
 }
@@ -15,8 +15,8 @@ match.count(house, pop, ...)
 as bare expressions, not as strings}
 }
 \value{
-a 2-column data frame with columns \code{SERIALNO} and
-       a result column called either \code{n} or \code{result.name}
+vector of counts of people matching (...) conditions,
+         should be aligned with house
 }
 \description{
 Counts the rows in the population table, grouped by household,
