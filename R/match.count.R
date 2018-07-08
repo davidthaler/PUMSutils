@@ -15,7 +15,7 @@
 #' @return a 2-column data frame with columns \code{SERIALNO} and
 #'        a result column called either \code{n} or \code{result.name}
 #'
-#' @importFrom dplyr quos filter rename_ count left_join replace_na
+#' @importFrom dplyr quos filter count left_join
 #'
 #' @export
 match.count <- function(house, pop, ...){
@@ -24,6 +24,6 @@ match.count <- function(house, pop, ...){
   cts <- count(x, SERIALNO)
   out <- house['SERIALNO']
   out <- left_join(out, cts)
-  out <- replace_na(out, list(n=0))
+  out$n <- ifelse(is.na(out$n), 0, out$n)
   out$n
 }
