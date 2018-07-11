@@ -14,12 +14,12 @@ We compute some example statistics about Washington State housing using this dat
 
 Estimate count, standard error and 90% margin-of-error for the total number of housing units in Washington State
 
-    line.estimate('Total.HU', estimate, wa.house16)
+    line.estimate(wa.house16, estimate)
 
 Compute counts, standard errors and 90% margin-of-error for rented, owned and vacant housing in Washington State, renaming the integer coded categorical variable `TEN`:
 
     wa.house16$Own.Rent <- acs.translate(wa.house16, 'TEN', c(1:4, NA), c('own', 'own', 'rent', 'rent', 'vacant'))    
-    group.count(wa.house16, 'Tenure', 'Own.Rent')
+    group.count(wa.house16, 'Own.Rent')
 
 In the PUMS data, the variable `TEN` denotes housing tenure. It is an integer-coded categorical variable. It has the levels: 1 = Owned with mortgage, 2 = Owned free and clear, 3 = Rented for cash, 4 = Occupied without rent, NA = Vacant. This description can be found at the [technical documentation](https://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html) page for the ACS. The technical documentation page also has ground-truth values for these calculations. A portion of that data, for the 2016 ACS housing data for Washington, is included in this package as `wa.gold16`. The example above corresponds to rows 1, 3, 4, and 9 in `wa.gold16`.
 
