@@ -11,7 +11,7 @@
 #' @param gp.var name of variable in x to group data by, a string
 #' @param ... other data passed to f
 #' @param result.name name of estimate column in result.
-#'        Default of NULL uses \code{substitute(f)}.
+#'        Default of NULL uses \code{deparse(substitute(f))}.
 #' @param include.total include the total across all groups, default TRUE
 #' @param drop.na.group default FALSE, drop the group where \code{gp.var} is NA
 #'

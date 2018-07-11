@@ -19,7 +19,7 @@ It must take data and a weight replicate number called
 \item{...}{other data passed to f}
 
 \item{result.name}{name of estimate column in result.
-Default of NULL uses \code{substitute(f)}.}
+Default of NULL uses \code{deparse(substitute(f))}.}
 
 \item{drop.na.group}{default FALSE, drop the group where \code{gp.var} is NA}
 
