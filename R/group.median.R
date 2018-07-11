@@ -5,9 +5,10 @@
 #' over the whole data.
 #'
 #' @param x a data frame of PUMS data
-#' @param result.name name of estimate column in result
 #' @param gp.var name of variable in x to group data by, a string
 #' @param med.var (string) name of a numerical column in x to take median over
+#' @param result.name name of estimate column in result.
+#'        Default is 'Median'
 #' @param drop.na.group drop the group where \code{gp.var} is NA; default TRUE
 #'
 #' @return data frame of median, standard error of the median,
@@ -16,10 +17,12 @@
 #'
 #' @examples
 #' # Median income by tenure type for Washington State in 2016
-#' group.median(wa.house16, 'Med.HH.Inc', 'TEN', 'HINCP', drop.na.group=TRUE)
+#' group.median(wa.house16, 'TEN', 'HINCP', result.name='Med.HH.Inc',
+#'              drop.na.group=TRUE)
 #'
 #' @export
-group.median <- function(x,result.name, gp.var, med.var, drop.na.group=TRUE){
-  group.estimate(result.name, acs.median, x, gp.var, med.var,
+group.median <- function(x, gp.var, med.var, result.name=NULL, drop.na.group=TRUE){
+  result.name <- ifelse(is.null(result.name), 'Median', result.name)
+  group.estimate(x, acs.median, gp.var, med.var, result.name=result.name,
                  drop.na.group = drop.na.group)
 }

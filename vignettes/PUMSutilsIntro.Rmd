@@ -63,7 +63,7 @@ See the PUMS technical documentation for details.
 Using `PUMSutils` the standard errors are computed with a function `acs.se`.
 
 ```{r se}
-acs.se(estimate, wa.house16)
+acs.se(wa.house16, estimate)
 ```
 
 The value given above in `wa.gold16` for `pums_se_16` was 675.
@@ -78,7 +78,7 @@ wa.house16$Own.Rent <- acs.translate(wa.house16,
                                    'TEN', 
                                    c(1:4, NA), 
                                    c('own', 'own', 'rent', 'rent', 'vacant'))   
-group.count(wa.house16, 'Tenure', 'Own.Rent')
+group.count(wa.house16, 'Own.Rent', 'Tenure')
 ```
 
 The values of the 'TEN' field are:

@@ -5,9 +5,10 @@
 #' over the whole data.
 #'
 #' @param x a data frame of PUMS data
-#' @param result.name name of estimate column in result
 #' @param gp.var name of variable in x to group data by, a string
 #' @param tot.var (string) name of a numerical column in x to aggregate
+#' @param result.name name of estimate column in result.
+#'        Default is 'Total.
 #' @param drop.na.group drop the group where \code{gp.var} is NA; default TRUE
 #'
 #' @return data frame of aggregate, standard error of the aggregate,
@@ -16,10 +17,11 @@
 #'
 #' @examples
 #' # Total household population of Washington State in 2016
-#' group.total(wa.house16, 'HH.Pop', 'TEN', 'NP', drop.na.group=TRUE)
+#' group.total(wa.house16, 'TEN', 'NP', result.name='HH.Pop', drop.na.group=TRUE)
 #'
 #' @export
-group.total <- function(x, result.name, gp.var, tot.var, drop.na.group=TRUE){
-  group.estimate(result.name, acs.total, x, gp.var, tot.var,
+group.total <- function(x, gp.var, tot.var, result.name=NULL, drop.na.group=TRUE){
+  result.name <- ifelse(is.null(result.name), 'Total', result.name)
+  group.estimate(x, acs.total, gp.var, tot.var, result.name=result.name,
                  drop.na.group = drop.na.group)
 }

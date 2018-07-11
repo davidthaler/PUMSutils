@@ -12,6 +12,7 @@
 #' See the ACS PUMS readme document referenced below for the details of
 #' the calculation of the direct standard errors.
 #'
+#' @param x a data frame of ACS PUMS data.
 #' @param f a function that takes data and a weight replicate number
 #'          called \code{wt.rep.num} with a default value of NULL
 #'
@@ -21,16 +22,16 @@
 #'
 #' @examples
 #' # Standard error of count of households in Washington State in 2016
-#' acs.se(estimate, wa.house16)
+#' acs.se(wa.house16, estimate)
 #'
 #' # Standard error of median household income in Washington State in 2016
-#' acs.se(acs.median, wa.house16, 'HINCP')
+#' acs.se(wa.house16, acs.median, 'HINCP')
 #'
 #' # Standard error of proportion of Washington STate households that pay cash rent
-#' acs.se(proportion, subset(wa.house16, TEN==3), wa.house16)
+#' acs.se(subset(wa.house16, TEN==3), proportion, wa.house16)
 #'
 #' @export
-acs.se <- function(f, x, ...){
+acs.se <- function(x, f, ...){
   pt.est <- f(x, ...)
   rep.ests <- sapply(1:80, function(n) f(x, ..., wt.rep.num=n))
   sqrt((4/80) * sum((rep.ests - pt.est)^2))

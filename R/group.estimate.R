@@ -4,13 +4,14 @@
 #' any statistic across groups defined by \code{gp.var} and (optionally)
 #' over the whole data.
 #'
-#' @param result.name name of estimate column in result
+#' @param x a data frame of PUMS data
 #' @param f a function to calculate the statistic.
 #'        It must take data and a weight replicate number called
 #'        \code{wt.rep.num} with a default value of NULL.
-#' @param x a data frame of PUMS data
 #' @param gp.var name of variable in x to group data by, a string
 #' @param ... other data passed to f
+#' @param result.name name of estimate column in result.
+#'        Default of NULL uses \code{substitute(f)}.
 #' @param include.total include the total across all groups, default TRUE
 #' @param drop.na.group default FALSE, drop the group where \code{gp.var} is NA
 #'
@@ -23,22 +24,23 @@
 #'
 #' @examples
 #' # Total of occupied households in Washington State in 2016
-#' group.estimate('HH.Ct', estimate, wa.house16, 'TEN', drop.na.group=TRUE)
+#' group.estimate(wa.house16, estimate, 'TEN', drop.na.group=TRUE)
 #'
 #' # 90% household income by tenure type for Washington State in 2016
-#' group.estimate('HH.Inc90', acs.quantile, wa.house16, 'TEN',
-#'                field='HINCP', probs=0.9, drop.na.group = TRUE)
+#' group.estimate(wa.house16, acs.quantile, 'TEN', field='HINCP',
+#'                probs=0.9, result.name='HH.Inc90', drop.na.group = TRUE)
 #'
 #' @export
-group.estimate <- function(result.name, f, x, gp.var, ...,
+group.estimate <- function(x, f, gp.var, ..., result.name=NULL,
                                drop.na.group=FALSE, include.total=TRUE){
+  result.name <- ifelse(is.null(result.name), deparse(substitute(f)), result.name)
   if(drop.na.group){
     x <- filter(x, is.finite(x[[gp.var]]))
   }
   gp <- group_by_(x, gp.var)
-  out <- as.data.frame(do(gp, line.estimate(result.name, f, ., ...)))
+  out <- as.data.frame(do(gp, line.estimate(., f, ..., result.name=result.name)))
   if(include.total){
-    le <- line.estimate(result.name, f, x, ...)
+    le <- line.estimate(x, f, ..., result.name=result.name)
     le[gp.var] = 'All'
     out <- rbind(out, le)
   }

@@ -5,10 +5,11 @@
 #' over the whole data.
 #'
 #' @param x a data frame of PUMS data
-#' @param result.name name of estimate column in result
 #' @param gp.var name of variable in x to group data by, a string
 #' @param mean.var (string) name of a numerical column in x to average over
 #' @param drop.na.group drop the group where \code{gp.var} is NA; default TRUE
+#' @param result.name name of estimate column in result.
+#'        Default is 'Mean'.
 #'
 #' @return data frame of mean, standard error of the mean,
 #'         and the margin of error of the mean of \code{mean.var}
@@ -16,10 +17,11 @@
 #'
 #' @examples
 #' # Average household size by tenure for Washington State in 2016
-#' group.mean(wa.house16, 'Mean.HH.Size', 'TEN', 'NP', drop.na.group=TRUE)
+#' group.mean(wa.house16, 'TEN', 'NP', result.name='Mean.HH.Size', drop.na.group=TRUE)
 #'
 #' @export
-group.mean <- function(x, result.name, gp.var, mean.var, drop.na.group=TRUE){
-  group.estimate(result.name, acs.mean, x, gp.var, mean.var,
+group.mean <- function(x, gp.var, mean.var, result.name=NULL, drop.na.group=TRUE){
+  result.name <- ifelse(is.null(result.name), 'Mean', result.name)
+  group.estimate(x, acs.mean, gp.var, mean.var, result.name=result.name,
                  drop.na.group = drop.na.group)
 }

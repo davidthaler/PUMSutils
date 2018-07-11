@@ -4,14 +4,15 @@
 \alias{group.proportion}
 \title{Compute proportion of group sizes on grouped ACS PUMS data.}
 \usage{
-group.proportion(x, result.name, gp.var, drop.na.group = TRUE)
+group.proportion(x, gp.var, result.name = NULL, drop.na.group = TRUE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}
 
-\item{result.name}{name of estimate column in result}
-
 \item{gp.var}{name of variable in x to group data by, a string}
+
+\item{result.name}{name of estimate column in result
+Default is "Pct.".}
 
 \item{drop.na.group}{drop the group where \code{gp.var} is NA}
 }
@@ -26,6 +27,6 @@ the proportion of sizes of the groups defined by \code{gp.var}.
 }
 \examples{
 # Fraction of occupied households by tenure type for Washington State in 2016
-group.proportion(wa.house16, 'HH.Pct', 'TEN', drop.na.group=TRUE)
+group.proportion(wa.house16, 'TEN', result.name='HH.Pct', drop.na.group=TRUE)
 
 }

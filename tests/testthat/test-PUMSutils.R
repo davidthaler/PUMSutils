@@ -10,8 +10,8 @@ test_that('estimate() produces correct total', {
 test_that('se.estimate() gives correct standard errors', {
   gold.se.HU <- wa.gold16$pums_se_16[1]
   gold.se.rentals <- wa.gold16$pums_se_16[7]
-  my.se.HU <- round(acs.se(estimate, wa.house16))
-  my.se.rentals <- round(acs.se(estimate, subset(wa.house16, TEN==3)))
+  my.se.HU <- round(acs.se(wa.house16, estimate))
+  my.se.rentals <- round(acs.se(subset(wa.house16, TEN==3), estimate))
   expect_equal(my.se.HU, gold.se.HU)
   expect_equal(my.se.rentals, gold.se.rentals)
 })

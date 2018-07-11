@@ -4,21 +4,22 @@
 \alias{group.estimate}
 \title{Compute estimates and standard errors on grouped ACS PUMS data.}
 \usage{
-group.estimate(result.name, f, x, gp.var, ..., drop.na.group = FALSE,
+group.estimate(x, f, gp.var, ..., result.name = NULL, drop.na.group = FALSE,
   include.total = TRUE)
 }
 \arguments{
-\item{result.name}{name of estimate column in result}
+\item{x}{a data frame of PUMS data}
 
 \item{f}{a function to calculate the statistic.
 It must take data and a weight replicate number called
 \code{wt.rep.num} with a default value of NULL.}
 
-\item{x}{a data frame of PUMS data}
-
 \item{gp.var}{name of variable in x to group data by, a string}
 
 \item{...}{other data passed to f}
+
+\item{result.name}{name of estimate column in result.
+Default of NULL uses \code{substitute(f)}.}
 
 \item{drop.na.group}{default FALSE, drop the group where \code{gp.var} is NA}
 
@@ -37,10 +38,10 @@ over the whole data.
 }
 \examples{
 # Total of occupied households in Washington State in 2016
-group.estimate('HH.Ct', estimate, wa.house16, 'TEN', drop.na.group=TRUE)
+group.estimate(wa.house16, estimate, 'TEN', drop.na.group=TRUE)
 
 # 90\% household income by tenure type for Washington State in 2016
-group.estimate('HH.Inc90', acs.quantile, wa.house16, 'TEN',
-               field='HINCP', probs=0.9, drop.na.group = TRUE)
+group.estimate(wa.house16, acs.quantile, 'TEN', field='HINCP',
+               probs=0.9, result.name='HH.Inc90', drop.na.group = TRUE)
 
 }

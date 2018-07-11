@@ -4,18 +4,19 @@
 \alias{line.estimate}
 \title{Compute an estimate and standard error from ACS PUMS data.}
 \usage{
-line.estimate(result.name, f, x, ...)
+line.estimate(x, f, ..., result.name = NULL)
 }
 \arguments{
-\item{result.name}{name of estimate column in result}
+\item{x}{a data frame of PUMS data.}
 
 \item{f}{a function to calculate the statistic.
 It must take data and a weight replicate number called
 \code{wt.rep.num} with a default value of NULL.}
 
-\item{x}{a data frame of PUMS data.}
-
 \item{...}{other data passed to f}
+
+\item{result.name}{name of estimate column in result.
+Default of NULL uses \code{deparse(substitute(f))}.}
 }
 \value{
 the point estimate, standard error and 90% margin of error
@@ -28,9 +29,10 @@ involving replicate weights and return results on one line.
 }
 \examples{
 # Number of households in Washington State in 2016
-line.estimate('HH.Units', estimate, wa.house16)
+line.estimate(wa.house16, estimate)
 
 # Fraction of Washington State households that rent for cash
-line.estimate('Renters.Pct', proportion, subset(wa.house16, TEN==3), wa.house16)
+line.estimate(subset(wa.house16, TEN==3), proportion, wa.house16,
+              result.name='Renters.Pct')
 
 }

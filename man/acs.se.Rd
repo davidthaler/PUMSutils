@@ -4,9 +4,11 @@
 \alias{acs.se}
 \title{Compute standard errors for ACS PUMS data by the direct method}
 \usage{
-acs.se(f, x, ...)
+acs.se(x, f, ...)
 }
 \arguments{
+\item{x}{a data frame of ACS PUMS data.}
+
 \item{f}{a function that takes data and a weight replicate number
 called \code{wt.rep.num} with a default value of NULL}
 }
@@ -28,13 +30,13 @@ the calculation of the direct standard errors.
 }
 \examples{
 # Standard error of count of households in Washington State in 2016
-acs.se(estimate, wa.house16)
+acs.se(wa.house16, estimate)
 
 # Standard error of median household income in Washington State in 2016
-acs.se(acs.median, wa.house16, 'HINCP')
+acs.se(wa.house16, acs.median, 'HINCP')
 
 # Standard error of proportion of Washington STate households that pay cash rent
-acs.se(proportion, subset(wa.house16, TEN==3), wa.house16)
+acs.se(subset(wa.house16, TEN==3), proportion, wa.house16)
 
 }
 \references{
