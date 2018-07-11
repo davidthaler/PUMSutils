@@ -20,8 +20,7 @@
 #' group.mean(wa.house16, 'TEN', 'NP', result.name='Mean.HH.Size', drop.na.group=TRUE)
 #'
 #' @export
-group.mean <- function(x, gp.var, mean.var, result.name=NULL, drop.na.group=TRUE){
-  result.name <- ifelse(is.null(result.name), 'Mean', result.name)
+group.mean <- function(x, gp.var, mean.var, result.name='Mean', drop.na.group=TRUE){
   group.estimate(x, acs.mean, gp.var, mean.var, result.name=result.name,
                  drop.na.group = drop.na.group)
 }

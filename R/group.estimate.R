@@ -33,7 +33,7 @@
 #' @export
 group.estimate <- function(x, f, gp.var, ..., result.name=NULL,
                                drop.na.group=FALSE, include.total=TRUE){
-  result.name <- ifelse(is.null(result.name), deparse(substitute(f)), result.name)
+  if(is.null(result.name)) result.name <- deparse(substitute(f))
   if(drop.na.group){
     x <- filter(x, is.finite(x[[gp.var]]))
   }

@@ -4,7 +4,8 @@
 \alias{group.median}
 \title{Compute weighted median of numerical column on grouped ACS PUMS data.}
 \usage{
-group.median(x, gp.var, med.var, result.name = NULL, drop.na.group = TRUE)
+group.median(x, gp.var, med.var, result.name = "Median",
+  drop.na.group = TRUE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}

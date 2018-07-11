@@ -4,7 +4,7 @@
 \alias{group.total}
 \title{Compute aggregate of numerical column on grouped ACS PUMS data.}
 \usage{
-group.total(x, gp.var, tot.var, result.name = NULL, drop.na.group = TRUE)
+group.total(x, gp.var, tot.var, result.name = "Total", drop.na.group = TRUE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}

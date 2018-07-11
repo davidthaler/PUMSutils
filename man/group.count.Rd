@@ -4,7 +4,7 @@
 \alias{group.count}
 \title{Compute weighted size of groups in ACS PUMS data.}
 \usage{
-group.count(x, gp.var, result.name = NULL, drop.na.group = FALSE)
+group.count(x, gp.var, result.name = "Count", drop.na.group = FALSE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}

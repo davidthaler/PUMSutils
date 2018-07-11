@@ -18,8 +18,7 @@
 #' group.count(wa.house16, 'TEN', result.name='Occ.HH', drop.na.group=TRUE)
 #'
 #' @export
-group.count <- function(x, gp.var, result.name=NULL, drop.na.group=FALSE){
-  result.name <- ifelse(is.null(result.name), 'Count', result.name)
+group.count <- function(x, gp.var, result.name='Count', drop.na.group=FALSE){
   group.estimate(x, estimate, gp.var, result.name=result.name,
                  drop.na.group=drop.na.group)
 }

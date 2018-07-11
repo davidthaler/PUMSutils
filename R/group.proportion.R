@@ -18,8 +18,7 @@
 #' group.proportion(wa.house16, 'TEN', result.name='HH.Pct', drop.na.group=TRUE)
 #'
 #' @export
-group.proportion <- function(x, gp.var, result.name=NULL, drop.na.group=TRUE){
-  result.name <- ifelse(is.null(result.name), 'Pct.', result.name)
+group.proportion <- function(x, gp.var, result.name='Pct.', drop.na.group=TRUE){
   if(drop.na.group){
     x <- filter(x, is.finite(x[[gp.var]]))
   }

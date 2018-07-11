@@ -20,8 +20,7 @@
 #' group.total(wa.house16, 'TEN', 'NP', result.name='HH.Pop', drop.na.group=TRUE)
 #'
 #' @export
-group.total <- function(x, gp.var, tot.var, result.name=NULL, drop.na.group=TRUE){
-  result.name <- ifelse(is.null(result.name), 'Total', result.name)
+group.total <- function(x, gp.var, tot.var, result.name='Total', drop.na.group=TRUE){
   group.estimate(x, acs.total, gp.var, tot.var, result.name=result.name,
                  drop.na.group = drop.na.group)
 }

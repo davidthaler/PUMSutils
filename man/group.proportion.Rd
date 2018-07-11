@@ -4,7 +4,7 @@
 \alias{group.proportion}
 \title{Compute proportion of group sizes on grouped ACS PUMS data.}
 \usage{
-group.proportion(x, gp.var, result.name = NULL, drop.na.group = TRUE)
+group.proportion(x, gp.var, result.name = "Pct.", drop.na.group = TRUE)
 }
 \arguments{
 \item{x}{a data frame of PUMS data}

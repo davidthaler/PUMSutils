@@ -21,8 +21,7 @@
 #'              drop.na.group=TRUE)
 #'
 #' @export
-group.median <- function(x, gp.var, med.var, result.name=NULL, drop.na.group=TRUE){
-  result.name <- ifelse(is.null(result.name), 'Median', result.name)
+group.median <- function(x, gp.var, med.var, result.name='Median', drop.na.group=TRUE){
   group.estimate(x, acs.median, gp.var, med.var, result.name=result.name,
                  drop.na.group = drop.na.group)
 }
