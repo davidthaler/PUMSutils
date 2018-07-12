@@ -35,7 +35,7 @@ group.estimate <- function(x, f, gp.var, ..., result.name=NULL,
                                drop.na.group=FALSE, include.total=TRUE){
   if(is.null(result.name)) result.name <- deparse(substitute(f))
   if(drop.na.group){
-    x <- filter(x, is.finite(x[[gp.var]]))
+    x <- filter(x, !is.na(x[[gp.var]]))
   }
   gp <- group_by_(x, gp.var)
   out <- as.data.frame(do(gp, line.estimate(., f, ..., result.name=result.name)))
