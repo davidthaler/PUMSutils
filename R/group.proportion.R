@@ -20,7 +20,7 @@
 #' @export
 group.proportion <- function(x, gp.var, result.name='Pct.', drop.na.group=TRUE){
   if(drop.na.group){
-    x <- filter(x, is.finite(x[[gp.var]]))
+    x <- filter(x, !is.na(x[[gp.var]]))
   }
   group.estimate(x, proportion, gp.var, x, result.name=result.name,
                  drop.na.group = drop.na.group, include.total = FALSE)
