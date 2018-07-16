@@ -4,8 +4,11 @@
 #' aggregate of \code{tot.var} across groups defined by \code{gp.var} and
 #' over the whole data.
 #'
-#' @param x a data frame of PUMS data
-#' @param gp.var name of variable in x to group data by, a string
+#' @param x a data frame of PUMS data. If x is already grouped, then this
+#'        function optionally adds a level to the grouping.
+#' @param gp.var name of variable in x to group data by (string) or NULL
+#'        if x is grouped and you do not want to add a level of grouping.
+#'        May not be NULL if x is not grouped.
 #' @param tot.var (string) name of a numerical column in x to aggregate
 #' @param result.name name of estimate column in result.
 #'        Default is 'Total.

@@ -7,9 +7,12 @@
 group.mean(x, gp.var, mean.var, result.name = "Mean", drop.na.group = TRUE)
 }
 \arguments{
-\item{x}{a data frame of PUMS data}
+\item{x}{a data frame of PUMS data. If x is already grouped, then this
+function optionally adds a level to the grouping.}
 
-\item{gp.var}{name of variable in x to group data by, a string}
+\item{gp.var}{name of variable in x to group data by (string) or NULL
+if x is grouped and you do not want to add a level of grouping.
+May not be NULL if x is not grouped.}
 
 \item{mean.var}{(string) name of a numerical column in x to average over}
 

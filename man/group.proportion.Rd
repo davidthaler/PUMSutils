@@ -7,9 +7,12 @@
 group.proportion(x, gp.var, result.name = "Pct.", drop.na.group = TRUE)
 }
 \arguments{
-\item{x}{a data frame of PUMS data}
+\item{x}{a data frame of PUMS data. If x is already grouped, then this
+function optionally adds a level to the grouping.}
 
-\item{gp.var}{name of variable in x to group data by, a string}
+\item{gp.var}{name of variable in x to group data by (string) or NULL
+if x is grouped and you do not want to add a level of grouping.
+May not be NULL if x is not grouped.}
 
 \item{result.name}{name of estimate column in result
 Default is "Pct.".}
@@ -27,6 +30,11 @@ the proportion of sizes of the groups defined by \code{gp.var}.
 }
 \examples{
 # Fraction of occupied households by tenure type for Washington State in 2016
-group.proportion(wa.house16, 'TEN', result.name='HH.Pct', drop.na.group=TRUE)
+group.proportion(wa.house16, 'TEN')
+
+# Same example using data grouped with group_by
+library(dplyr)
+gp <- group_by(wa.house16, TEN)
+group.proportion(gp, NULL)
 
 }

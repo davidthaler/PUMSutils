@@ -78,7 +78,7 @@ wa.house16$Own.Rent <- acs.translate(wa.house16,
                                    'TEN', 
                                    c(1:4, NA), 
                                    c('own', 'own', 'rent', 'rent', 'vacant'))   
-group.count(wa.house16, 'Own.Rent', 'Tenure')
+group.count(wa.house16, 'Own.Rent')
 ```
 
 The values of the 'TEN' field are:
@@ -87,9 +87,19 @@ The values of the 'TEN' field are:
 2. owned free and clear
 3. rented for cash
 4. occupied w/o payment
- 
-In general, you will have to look at the data dictionary for the definitions.
+
+For the `wa.house16` data, you can use `?wa.house16` to get help for this data set.In general, you will have to look at the data dictionary for the definitions.
 It is on the Census Bureau's [technical documentation page](http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html).
-For the `wa.house16` data, you can use `?wa.house16` to get help for this data set.
+
+You can also provide data already grouped using `dplyr::group_by`.
+In this case, the grouping variable is added as a new level, 
+and you pass `NULL` if you do not want to add any new levels.
+
+```{r pregrouped}
+# Clip number of persons to 5
+wa.house16$Size <- clip.column(wa.house16, 'NP', 5)
+gp <- group_by(wa.house16, Own.Rent, Size)
+group.count(gp, NULL)
+```
 
 Check the `PUMSutils` documentation for the remaining functions.

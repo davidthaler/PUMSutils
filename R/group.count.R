@@ -15,7 +15,13 @@
 #'
 #' @examples
 #' # Count of occupied households by tenure type for Washington State in 2016
-#' group.count(wa.house16, 'TEN', result.name='Occ.HH', drop.na.group=TRUE)
+#' group.count(wa.house16, 'TEN')
+#'
+#' # Example using data grouped with group_by
+#' library(dplyr)
+#' wa.house16$Size <- clip.column(wa.house16, 'NP', 5)
+#' gp <- group_by(wa.house16, TEN)
+#' group.count(gp, 'Size')
 #'
 #' @export
 group.count <- function(x, gp.var, result.name='Count', drop.na.group=FALSE){

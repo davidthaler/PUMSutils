@@ -8,13 +8,16 @@ group.estimate(x, f, gp.var, ..., result.name = NULL, drop.na.group = FALSE,
   include.total = TRUE)
 }
 \arguments{
-\item{x}{a data frame of PUMS data}
+\item{x}{a data frame of PUMS data. If x is already grouped, then this
+function optionally adds a level to the grouping.}
 
 \item{f}{a function to calculate the statistic.
 It must take data and a weight replicate number called
 \code{wt.rep.num} with a default value of NULL.}
 
-\item{gp.var}{name of variable in x to group data by, a string}
+\item{gp.var}{name of variable in x to group data by (string) or NULL
+if x is grouped and you do not want to add a level of grouping.
+May not be NULL if x is not grouped.}
 
 \item{...}{other data passed to f}
 
@@ -28,13 +31,15 @@ Default of NULL uses \code{deparse(substitute(f))}.}
 \value{
 data frame of estimate, standard error of the estimate,
         and the margin of error of the estimate, for the statistic
-        defined by `f` , over the groups defined by \code{gp.var}
+        defined by `f`, over the groups defined by \code{gp.var}
         and (optionally) the whole data.
 }
 \description{
 Collect point estimate, standard error and 90% margin-of-error for
 any statistic across groups defined by \code{gp.var} and (optionally)
-over the whole data.
+over the whole data. If x is grouped already, \code{gp.var} is added
+to the grouping, but in this case, \code{gp.var} can be NULL,
+which does not add a new grouping.
 }
 \examples{
 # Total of occupied households in Washington State in 2016
@@ -43,5 +48,10 @@ group.estimate(wa.house16, estimate, 'TEN', drop.na.group=TRUE)
 # 90\% household income by tenure type for Washington State in 2016
 group.estimate(wa.house16, acs.quantile, 'TEN', field='HINCP',
                probs=0.9, result.name='HH.Inc90', drop.na.group = TRUE)
+
+# First example, with data already grouped using group_by
+library(dplyr)
+gp <- group_by(wa.house16, TEN)
+group.estimate(gp, estimate, NULL, drop.na.group=TRUE)
 
 }
