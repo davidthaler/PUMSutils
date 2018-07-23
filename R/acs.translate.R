@@ -37,6 +37,5 @@ acs.translate <- function(x, field, old, new, level.order=NULL){
   if(is.null(level.order)){
     level.order <- unique(new)
   }
-  out <- factor(out, levels=level.order)
-  out
+  factor(out, levels=level.order)
 }
