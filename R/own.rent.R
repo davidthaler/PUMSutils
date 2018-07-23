@@ -15,6 +15,6 @@
 #'
 #' @export
 own.rent <- function(house){
-  acs.translate(data, 'TEN', c(1,2,3,4,NA),
+  acs.translate(house, 'TEN', c(1,2,3,4,NA),
                 c('Own', 'Own', 'Rent', 'Rent', 'Vacant/GQ'))
 }
