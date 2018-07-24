@@ -1,4 +1,4 @@
-#' Define rent burden based on gross rent as a percent of household income.
+#' Define rent burden of households.
 #'
 #' Households are said to be rent-burdened if their rent is more than 30%
 #' of household income.
@@ -10,7 +10,7 @@
 #'
 #' @return factor column with levels of rent burden for households
 #'
-#' @import Hmisc cut2
+#' @importFrom Hmisc cut2
 #'
 #' @examples
 #' wa.house16$Rent.Burden <- rent.burden(wa.house16)

@@ -1,4 +1,4 @@
-#' Describe Households as Renters or Owners
+#' Describe households as renters or owners
 #'
 #' In the ACS PUMS data, housing tenure is described with a 4-level
 #' integer-coded categorical that uses NA to mark vacant units.
