@@ -11,7 +11,7 @@
 \item{RELP}{relationship of this person to the reference person. See references.}
 \item{AGEP}{age}
 \item{SEX}{sex}
-\item{ESR}{Employment Status}
+\item{ESR}{Employment Status. See references. Coded as NA=under 16; 1,2,4,5=employed; 3=unemployed; 6=Not in Labor Force}
 \item{RAC1P}{Race. See references. Coded  as 1=White, 2=Black, 3,4,5=Native, 6,7=Asian or Pacific Islander, 8=Other Race, 9=Mixed}
 \item{HISP}{Hispanic Ancestry. See references. Coded 1 for "not Hispanic", anything else is Hispanic}
 \item{PWGTP}{expansion weight, the number of people in the population represented by this row}
