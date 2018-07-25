@@ -10,15 +10,12 @@
 #'
 #' @return factor column with levels of rent burden for households
 #'
-#' @importFrom Hmisc cut2
-#'
 #' @examples
 #' wa.house16$Rent.Burden <- rent.burden(wa.house16)
 #' group.count(wa.house16, 'Rent.Burden', drop.na.level=TRUE)
 #'
 #' @export
 rent.burden <- function(house){
-  out <- cut2(house$GRPIP, cuts=c(30, 40, 50))
-  levels(out) <- c('No Burden', '30%-39%', '40%-49%', '50%+')
-  out
+  acs.cut(house, cuts=c(30, 40, 50),
+          labels=c('0-30%', '30%-39%', '40%-49%', '50%+'))
 }
