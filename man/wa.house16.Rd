@@ -4,9 +4,10 @@
 \name{wa.house16}
 \alias{wa.house16}
 \title{2016 ACS Washington Housing Data}
-\format{A data frame with 89 variables:
+\format{A data frame with 90 variables:
 \describe{
 \item{SERIALNO}{household serial number, a unique identifier. This is the join key to the person records.}
+\item{PUMA}{Public Use Microdata Area}
 \item{NP}{number of persons in household}
 \item{GRPIP}{gross rent as a percentage of household income}
 \item{GRNTP}{monthly gross rent}
@@ -22,7 +23,7 @@ wa.house16
 }
 \description{
 Partial 2016 ACS PUMS housing data for Washington State.
-Data has 33241 rows (all rows), but only 89 columns.
+Data has 33241 rows (all rows), but only 90 columns.
 Included variables are SERIALNO, NP, GRPIP, GRNTP, HINCP, VACS, TEN, BDSP,
 the expansion weight (WGTP), and the 80 replicate weights.
 VACS and TEN are the only variables used in the ACS PUMS estimates

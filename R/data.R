@@ -16,7 +16,7 @@
 #' 2016 ACS Washington Housing Data
 #'
 #' Partial 2016 ACS PUMS housing data for Washington State.
-#' Data has 33241 rows (all rows), but only 89 columns.
+#' Data has 33241 rows (all rows), but only 90 columns.
 #' Included variables are SERIALNO, NP, GRPIP, GRNTP, HINCP, VACS, TEN, BDSP,
 #' the expansion weight (WGTP), and the 80 replicate weights.
 #' VACS and TEN are the only variables used in the ACS PUMS estimates
@@ -25,9 +25,10 @@
 #' The other variables are actual numbers (not categorical)
 #' and are used in tests and vignettes.
 #'
-#' @format A data frame with 89 variables:
+#' @format A data frame with 90 variables:
 #' \describe{
 #' \item{SERIALNO}{household serial number, a unique identifier. This is the join key to the person records.}
+#' \item{PUMA}{Public Use Microdata Area}
 #' \item{NP}{number of persons in household}
 #' \item{GRPIP}{gross rent as a percentage of household income}
 #' \item{GRNTP}{monthly gross rent}
@@ -44,17 +45,14 @@
 
 #' 2016 ACS Population Data for Seattle
 #'
-#' Partial 2016 ACS PUMS person records for Seattle.
-#' The geography is approximate; data is for Public Use Microdata
-#' Areas (PUMA) 11601:11605, which approximate Seattle.
-#' Data has 6053 rows and 89 columns
-#' Included variables are SERIALNO, PUMA, RELP, AGEP, SEX, ESR, RAC1P, HISP,
+#' Partial 2016 ACS PUMS person records for Washington State.
+#' Data has 72383 rows and 88 columns
+#' Included variables are SERIALNO, RELP, AGEP, SEX, ESR, RAC1P, HISP,
 #' the expansion weight (PWGTP), and the 80 replicate weights.
 #'
-#' @format A data frame with 89 variables:
+#' @format A data frame with 88 variables:
 #' \describe{
 #' \item{SERIALNO}{household serial number, a unique identifier. This is the join key to the housing data.}
-#' \item{PUMA}{Public Use Microdata Area}
 #' \item{RELP}{relationship of this person to the reference person. See references.}
 #' \item{AGEP}{age}
 #' \item{SEX}{sex}
@@ -66,4 +64,4 @@
 #' }
 #'
 #' @references 2016 ACS PUMS Data Dictionary \url{http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html}
-'sea.pop16'
+'wa.pop16'
