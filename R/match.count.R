@@ -17,6 +17,11 @@
 #'
 #' @importFrom dplyr quos filter count left_join
 #'
+#' @examples
+#' # ESR is employment status; levels 1, 2, 4, and 5 are the employed levels
+#' wa.house16$num.work <- match.count(wa.house16, wa.pop16, ESR %in% c(1,2,4,5))
+#' group.count(wa.house16, 'num.work')
+#'
 #' @export
 match.count <- function(house, pop, ...){
   cond.list <- quos(...)

@@ -26,3 +26,9 @@ The result can be joined to the housing data on \code{SERIALNO},
 and the housing weights (called \code{WGTP}) should be used to
 compute estimates.
 }
+\examples{
+# ESR is employment status; levels 1, 2, 4, and 5 are the employed levels
+wa.house16$num.work <- match.count(wa.house16, wa.pop16, ESR \%in\% c(1,2,4,5))
+group.count(wa.house16, 'num.work')
+
+}
