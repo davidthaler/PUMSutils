@@ -21,6 +21,6 @@ for rent below 30%, 30% to 40%, 40% to 50% and above 50% of income.
 }
 \examples{
 wa.house16$Rent.Burden <- rent.burden(wa.house16)
-group.count(wa.house16, 'Rent.Burden', drop.na.level=TRUE)
+group.count(wa.house16, 'Rent.Burden', drop.na.group=TRUE)
 
 }

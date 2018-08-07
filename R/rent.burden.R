@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' wa.house16$Rent.Burden <- rent.burden(wa.house16)
-#' group.count(wa.house16, 'Rent.Burden', drop.na.level=TRUE)
+#' group.count(wa.house16, 'Rent.Burden', drop.na.group=TRUE)
 #'
 #' @export
 rent.burden <- function(house){
