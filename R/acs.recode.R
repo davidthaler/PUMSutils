@@ -26,6 +26,6 @@
 #'
 #' @export
 acs.recode <- function(x, field, dd, max.len=-1){
-  levelmap <- levels.df(dd, field, max.len=max.len)
+  levelmap <- acs.levels(dd, field, max.len=max.len)
   acs.translate(x, field, old=levelmap$level.num, new=levelmap$text)
 }
