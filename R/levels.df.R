@@ -1,8 +1,10 @@
 #' Splits data dict into chunks separated by blank lines
 #'
-#' @param dd the data dictionary as a string
-#'
 #' @importFrom stringr str_split
+#'
+#' @noRd
+#'
+#' @param dd the data dictionary as a string
 #'
 #' @return list of all chunks in the data dictionary
 get.chunk.str <- function(dd){
@@ -18,10 +20,11 @@ get.chunk.str <- function(dd){
 #'
 #' @importFrom stringr str_replace_all
 #'
+#' @noRd
+#'
 #' @param s a string
 #'
 #' @return s, with leading and trailing whitespace stripped.
-#'
 str_strip <- function(s){
   str_replace_all(s, '(^[[:blank:]]+|[[:blank:]]+$)', '')
 }
@@ -29,9 +32,11 @@ str_strip <- function(s){
 
 #' Formats list of chunks from get.chunk.str
 #'
-#' @param s a string with one chunk from get.chunk.str
-#'
 #' @importFrom stringr str_split
+#'
+#' @noRd
+#'
+#' @param s a string with one chunk from get.chunk.str
 #'
 #' @return character vector with one line from data dictionary per element
 fmt.chunk.str <- function(s){
@@ -45,10 +50,12 @@ fmt.chunk.str <- function(s){
 #' The token is the ACS column name. It will be in all caps.
 #' It will start the first line of the field definition.
 #'
+#' @importFrom stringr str_detect
+#'
+#' @noRd
+#'
 #' @param dd the data dict as a string
 #' @param token the ACS short name to extract
-#'
-#' @importFrom stringr str_detect
 #'
 #' @return character vector with part of field, one element per line
 extract.field <- function(dd, token){
