@@ -6,7 +6,7 @@
 #'
 #' @return list of all chunks in the data dictionary
 get.chunk.str <- function(dd){
-  str_split(dd, '\n[[:blank:]]*\n')[[1]]
+  str_split(dd, '\n[[:blank:]]*\n+')[[1]]
 }
 
 
@@ -66,14 +66,16 @@ extract.field <- function(dd, token){
 #'
 #' @param dd the data dict as a string
 #' @param token the ACS short name to extract
+#' @param max.len max length of description in characters, default is all
 #'
 #' @return data frame from the integer level code to the level description
 #'
-#' @importFrom stringr str_split
-levels.df <- function(dd, token){
+#' @importFrom stringr str_split str_sub
+levels.df <- function(dd, token, max.len=-1){
   parts <- str_split(extract.field(dd, token), ' \\.')
   parts <- parts[3:length(parts)]
   level.num <- suppressWarnings(sapply(parts, function(x) as.numeric(x[1])))
   level.text <- sapply(parts, function(x) x[2])
+  level.text <- str_sub(level.text, end=max.len)
   data.frame(level.num=level.num, text=level.text, stringsAsFactors=FALSE)
 }

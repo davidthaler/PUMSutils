@@ -4,7 +4,7 @@
 \alias{acs.recode}
 \title{Rewrite variable levels using data dictionary}
 \usage{
-acs.recode(x, field, dd)
+acs.recode(x, field, dd, max.len = -1)
 }
 \arguments{
 \item{x}{ACS PUMS data frame}
@@ -12,6 +12,8 @@ acs.recode(x, field, dd)
 \item{field}{column name for a variable in the ACS PUMS data}
 
 \item{dd}{the ACS data dictionary loaded as a string}
+
+\item{max.len}{max length of description in characters, default is all}
 }
 \value{
 factor column with integer levels in \code{x[field]} replaced

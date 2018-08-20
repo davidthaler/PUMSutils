@@ -10,12 +10,13 @@
 #' @param x ACS PUMS data frame
 #' @param field column name for a variable in the ACS PUMS data
 #' @param dd the ACS data dictionary loaded as a string
+#' @param max.len max length of description in characters, default is all
 #'
 #' @return factor column with integer levels in \code{x[field]} replaced
 #'         with the desciption for that level from the data dictionary.
 #'
 #' @export
-acs.recode <- function(x, field, dd){
-  levelmap <- levels.df(dd, field)
+acs.recode <- function(x, field, dd, max.len=-1){
+  levelmap <- levels.df(dd, field, max.len=max.len)
   acs.translate(x, field, old=levelmap$level.num, new=levelmap$text)
 }

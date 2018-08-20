@@ -4,12 +4,14 @@
 \alias{levels.df}
 \title{Map integer levels to their descriptions}
 \usage{
-\method{levels}{df}(dd, token)
+\method{levels}{df}(dd, token, max.len = -1)
 }
 \arguments{
 \item{dd}{the data dict as a string}
 
 \item{token}{the ACS short name to extract}
+
+\item{max.len}{max length of description in characters, default is all}
 }
 \value{
 data frame from the integer level code to the level description
