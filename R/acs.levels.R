@@ -11,6 +11,14 @@
 #'
 #' @return data frame from the integer level code to the level description
 #'
+#' @examples
+#' library(readr)
+#' # Get file path for data dict, which is in inst/extdata/ in the package
+#' dd.file <- system.file('extdata', 'PUMS_Data_Dictionary_2016.txt',
+#'                package='PUMSutils', mustWork=TRUE)
+#' dd <- read_file(dd.file)
+#' acs.levels(dd, 'ESR', max.len = 30)
+#'
 #' @export
 acs.levels <- function(dd, token, max.len=-1){
   parts <- str_split(extract.field(dd, token), ' \\.')

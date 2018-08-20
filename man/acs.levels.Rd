@@ -20,3 +20,12 @@ data frame from the integer level code to the level description
 Builds a data frame mapping integer coded categorical variable levels
 in the ACS PUMS data to a factor named with text from the data dictionary.
 }
+\examples{
+library(readr)
+# Get file path for data dict, which is in inst/extdata/ in the package
+dd.file <- system.file('extdata', 'PUMS_Data_Dictionary_2016.txt',
+               package='PUMSutils', mustWork=TRUE)
+dd <- read_file(dd.file)
+acs.levels(dd, 'ESR', max.len = 30)
+
+}
