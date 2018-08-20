@@ -27,3 +27,13 @@ the data dicitonary as a string and uses it to construct a factor variable
 that recodes integer levels to the text definitions given in the data
 dictionary.
 }
+\examples{
+library(readr)
+# Get file path for data dict, which is in inst/extdata/ in the package
+dd.file <- system.file('extdata', 'PUMS_Data_Dictionary_2016.txt',
+               package='PUMSutils', mustWork=TRUE)
+dd <- read_file(dd.file)
+wa.pop16$employment <- acs.recode(wa.pop16, 'ESR', dd, max.len=40)
+group.count(wa.pop16, 'employment')
+
+}

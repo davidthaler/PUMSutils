@@ -15,6 +15,15 @@
 #' @return factor column with integer levels in \code{x[field]} replaced
 #'         with the desciption for that level from the data dictionary.
 #'
+#' @examples
+#' library(readr)
+#' # Get file path for data dict, which is in inst/extdata/ in the package
+#' dd.file <- system.file('extdata', 'PUMS_Data_Dictionary_2016.txt',
+#'                package='PUMSutils', mustWork=TRUE)
+#' dd <- read_file(dd.file)
+#' wa.pop16$employment <- acs.recode(wa.pop16, 'ESR', dd, max.len=40)
+#' group.count(wa.pop16, 'employment')
+#'
 #' @export
 acs.recode <- function(x, field, dd, max.len=-1){
   levelmap <- levels.df(dd, field, max.len=max.len)
