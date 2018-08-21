@@ -21,6 +21,11 @@
 #'
 #' @export
 acs.recode <- function(x, field, dd, max.len=-1){
-  levelmap <- acs.levels(dd, field, max.len=max.len)
-  acs.translate(x, field, old=levelmap$level.num, new=levelmap$text)
+  field.desc <- acs.describe(dd, field, max.len=max.len)
+  if(is.character(field.desc$Levels$Level)){
+    stop(field, ' is not categorical; cannot recode')
+  }
+  acs.translate(x, field,
+                old=field.desc$Levels$Level,
+                new=field.desc$Levels$Level.Desc)
 }

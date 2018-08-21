@@ -2,7 +2,6 @@
 
 export(acs.cut)
 export(acs.describe)
-export(acs.levels)
 export(acs.mean)
 export(acs.median)
 export(acs.quantile)
