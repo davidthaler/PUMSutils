@@ -14,6 +14,13 @@
 #'
 #' @return list with column name and description, levels and their definitions
 #'
+#' @examples
+#' # Integer-coded categorical field
+#' acs.describe(data.dict16, 'TEN')
+#'
+#' # Numeric field
+#' acs.describe(data.dict16, 'NP', 25)
+#'
 #' @export
 acs.describe <- function(dd, field, max.len=-1){
   chunk <- field.chunk(dd, field)
