@@ -43,6 +43,34 @@ fmt.chunk.str <- function(s){
   str_strip(str_split(s, '\n')[[1]])
 }
 
+#' Extract a chunk for one field out of data dict
+#'
+#' @importFrom stringr str_subset
+#'
+#' @noRd
+#'
+#' @param dd the data dict as a string
+#' @param token the ACS short name to extract
+#'
+#' @return the matching chunk, or character(0) if not found
+field.chunk <- function(dd, token){
+  pat <- paste0('^', token, '[:blank:]')
+  str_subset(get.chunk.str(dd), pat)
+}
+
+#' Check if field is numeric instead of categorical
+#'
+#' @importFrom stringr str_detect
+#'
+#' @noRd
+#'
+#' @param ex.field output of extract.field
+#'
+#' @return TRUE if field is numeric, else FALSE
+sniff.numeric <- function(ex.field){
+  pat <- "^-?[:digit:]+\\.\\."
+  any(str_detect(ex.field, pat))
+}
 
 #' Extract text from data dictionary for a variable
 #'
