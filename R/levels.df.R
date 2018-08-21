@@ -64,7 +64,7 @@ field.chunk <- function(dd, token){
 #'
 #' @noRd
 #'
-#' @param ex.field output of extract.field
+#' @param ex.field output of fmt.chunk.str(field.chunk(dd, field))
 #'
 #' @return TRUE if field is numeric, else FALSE
 sniff.numeric <- function(ex.field){
@@ -72,23 +72,3 @@ sniff.numeric <- function(ex.field){
   any(str_detect(ex.field, pat))
 }
 
-#' Extract text from data dictionary for a variable
-#'
-#' Extract all of the text after a token.
-#' The token is the ACS column name. It will be in all caps.
-#' It will start the first line of the field definition.
-#'
-#' @importFrom stringr str_detect
-#'
-#' @noRd
-#'
-#' @param dd the data dict as a string
-#' @param token the ACS short name to extract
-#'
-#' @return character vector with part of field, one element per line
-extract.field <- function(dd, token){
-  dd.chunks <- get.chunk.str(dd)
-  pat <- paste0('^', token, '[[:blank:]]')
-  tok.str <- dd.chunks[str_detect(dd.chunks, pat)]
-  fmt.chunk.str(tok.str)
-}
