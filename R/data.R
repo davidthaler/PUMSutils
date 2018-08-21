@@ -65,3 +65,18 @@
 #'
 #' @references 2016 ACS PUMS Data Dictionary \url{http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html}
 'wa.pop16'
+
+#' 2016 ACS Data Dictionary
+#'
+#' The data dictionaries for ACS PUMS data are supplied as text files.
+#' The data dictionary for the 2016 1-year ACS PUMS data is included in this
+#' package as a string in the variable \code{data.dict16}.
+#' Users can load the data dictionary for the ACS PUMS data that they are using,
+#' which may be somewhat different from this one as:
+#' \code{readr::read_file(path)}. That returns a string that can be used whenever
+#' a data dictionary is called for in PUMSutils.
+#'
+#' @format a string
+#'
+#' @references 2016 ACS PUMS Data Dictionary \url{http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html}
+'data.dict16'
