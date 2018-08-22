@@ -20,11 +20,11 @@
 #' med.inc <- acs.median(wa.house16, 'HINCP')
 #' cuts <- med.inc * c(0.3, 0.5, 0.8, 1.2)
 #' labels <- c('0-30 AMI', '30-50 AMI', '50-80 AMI', '80-120 AMI', '>120 AMI')
-#' wa.house.16$Income.Band <- acs.cut(wa.house16, 'HINCP', cuts=cuts, labels=labels)
+#' wa.house16$Income.Band <- column.cut(wa.house16, 'HINCP', cuts=cuts, labels=labels)
 #' group.count(wa.house16, 'Income.Band', drop.na.group=TRUE)
 #'
 #' @export
-acs.cut <- function(x, field, cuts, labels=NULL){
+column.cut <- function(x, field, cuts, labels=NULL){
   out <- cut2(x[[field]], cuts=cuts)
   nlab <- length(labels)
   nlvl <- length(levels(out))

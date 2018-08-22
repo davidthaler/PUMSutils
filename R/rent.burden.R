@@ -16,6 +16,6 @@
 #'
 #' @export
 rent.burden <- function(house){
-  acs.cut(house, 'GRPIP', cuts=c(30, 40, 50),
+  column.cut(house, 'GRPIP', cuts=c(30, 40, 50),
           labels=c('0-30%', '30%-39%', '40%-49%', '50%+'))
 }
