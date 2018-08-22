@@ -47,7 +47,7 @@ The `PUMSutils` package simplifies these calculations.
 
 ## PUMSutils
 
-The `PUMSUtils` package has functions for computing estimates and standard errors for counts, proportions, and means, as well as computing tables and point estimates for medians and quantiles. It also contains utility functions for loading PUMS datasets, renaming the numerous integer-coded categorical variables in the PUMS data, and other common operations on this dataset.
+The `PUMSUtils` package has functions for computing estimates and standard errors for counts, proportions, means and quantiles as well as computing tables of any statistic that it can compute. It also contains utility functions for loading PUMS datasets, renaming the numerous integer-coded categorical variables in the PUMS data, and querying metadata from the data dictionary.
 
 Using `PUMSutils` the above example looks like this:
 
@@ -55,10 +55,7 @@ Using `PUMSutils` the above example looks like this:
 estimate(wa.house16)
 ```
 
-In this case, there is no real difference. 
-Computing a standard error using the weight replicates is more involved, 
-and requires using the 80 replicate weights.
-See the PUMS technical documentation for details.
+In this case, there is no real difference. Computing a standard error using the weight replicates is more involved, and requires using the 80 replicate weights. See the PUMS technical documentation for details.
 
 Using `PUMSutils` the standard errors are computed with a function `acs.se`.
 
@@ -88,12 +85,27 @@ The values of the 'TEN' field are:
 3. rented for cash
 4. occupied w/o payment
 
-For the `wa.house16` data, you can use `?wa.house16` to get help for this data set.In general, you will have to look at the data dictionary for the definitions.
+For the `wa.house16` data, you can use `?wa.house16` to get help for this data set. In general, you will have to look at the data dictionary for the definitions.
 It is on the Census Bureau's [technical documentation page](http://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html).
 
-You can also provide data already grouped using `dplyr::group_by`.
-In this case, the grouping variable is added as a new level, 
-and you pass `NULL` if you do not want to add any new levels.
+For the 2016 1-year data, the data dictionary is included in the package as `data.dict16`, and it can be queried with `acs.describe`.
+
+```{r describe}
+acs.describe(data.dict16, 'TEN')
+```
+
+If you are working with other ACS data, you should use the appropriate data dictionary, although the provided one will usually work at least for recent 1-year data. The Census bureau supplies the data dictionaries as machine-generated, human-readable text files. This package works with the data dictionary as a string, so you can just load them with `readr::read_file(path)`.
+
+There are a large number of integer-coded categorical fields in the ACS data.
+These can be rewritten automatically using the data dictionary and `acs.recode`.
+Here we compute counts of Washington residents by employment status from `wa.pop16`, which contains partial ACS PUMS population data for Washington State for 2016.
+
+```{r recode}
+wa.pop16$employment <- acs.recode(wa.pop16, 'ESR', data.dict16, 40)
+group.count(wa.pop16, 'employment')
+```
+
+If you want to tabulate over multiple variables, you can provide data already grouped using `dplyr::group_by`. In this case, the grouping variable is added as a new level, and you pass `NULL` if you do not want to add any new levels.
 
 ```{r pregrouped}
 # Clip number of persons to 5
@@ -101,5 +113,7 @@ wa.house16$Size <- clip.column(wa.house16, 'NP', 5)
 gp <- group_by(wa.house16, Own.Rent, Size)
 group.count(gp, NULL)
 ```
+
+Be sure to check the standard errors when tabulating on multiple variables. The sample counts can get small, resulting in large margins-of-error.
 
 Check the `PUMSutils` documentation for the remaining functions.

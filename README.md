@@ -23,6 +23,15 @@ Compute counts, standard errors and 90% margin-of-error for rented, owned and va
 
 In the PUMS data, the variable `TEN` denotes housing tenure. It is an integer-coded categorical variable. It has the levels: 1 = Owned with mortgage, 2 = Owned free and clear, 3 = Rented for cash, 4 = Occupied without rent, NA = Vacant. This description can be found at the [technical documentation](https://www.census.gov/programs-surveys/acs/technical-documentation/pums/documentation.html) page for the ACS. The technical documentation page also has ground-truth values for these calculations. A portion of that data, for the 2016 ACS housing data for Washington, is included in this package as `wa.gold16`. The example above corresponds to rows 1, 3, 4, and 9 in `wa.gold16`.
 
+The ACS data includes hundreds of variables, each with its own definition. This package includes the data dictionary for the 2016 1-year ACS data in the  variable `data.dict16` and a function for querying it for information.
+
+    acs.describe(data.dict16, 'TEN')
+
+Integer-coded categorical fields, common in the ACS data, can be automatically rewritten to have text labels in place of the integers using `acs.recode`.
+
+    wa.pop16$employment <- acs.recode(wa.pop16, 'ESR', data.dict16, 40)
+    group.count(wa.pop16, 'employment')
+
 For other functions, see the package docs.
 
 ### Installation
