@@ -10,6 +10,7 @@ Depends:
 Imports:
     dplyr,
     stringr,
+    ggplot2,
     Hmisc
 Suggests:
     knitr,

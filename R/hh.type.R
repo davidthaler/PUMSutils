@@ -13,6 +13,10 @@
 #'
 #' @export
 hh.type <- function(house){
+  vars.used <- c('NP', 'HHT', 'PARTNER', 'HUPAC')
+  if(!(all(vars.used %in% names(house)))){
+    stop('Data must have columns: NP, HHT, PARTNER, HUPAC')
+  }
   with(house,
         case_when(
           NP==0 ~ 'Vacant',
