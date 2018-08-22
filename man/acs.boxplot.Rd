@@ -26,3 +26,10 @@ ggplot of the weighted distribution of y, partitioned by x
 Make a weighted boxplot of the distribution of a numeric field in the
 ACS PUMS data, partitioned by a categorical field.
 }
+\examples{
+wa.house16$Beds <- clip.column(wa.house16, 'BDSP', 5)
+acs.boxplot(wa.house16[!is.na(wa.house16$GRNTP),], 'Beds', 'GRNTP',
+            title='Rent vs. Bedrooms', xlab='Beds (max. 5)',
+            ylab='Gross Rent($)')
+
+}

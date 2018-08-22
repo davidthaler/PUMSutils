@@ -14,6 +14,12 @@
 #'
 #' @return ggplot of the weighted distribution of y, partitioned by x
 #'
+#' @examples
+#' wa.house16$Beds <- clip.column(wa.house16, 'BDSP', 5)
+#' acs.boxplot(wa.house16[!is.na(wa.house16$GRNTP),], 'Beds', 'GRNTP',
+#'             title='Rent vs. Bedrooms', xlab='Beds (max. 5)',
+#'             ylab='Gross Rent($)')
+#'
 #' @export
 acs.boxplot <- function(data, x, y, title=NULL, xlab=NULL, ylab=NULL){
   wt <- get.weight(data)
