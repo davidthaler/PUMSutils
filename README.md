@@ -32,6 +32,10 @@ Integer-coded categorical fields, common in the ACS data, can be automatically r
     wa.pop16$employment <- acs.recode(wa.pop16, 'ESR', data.dict16, 40)
     group.count(wa.pop16, 'employment')
 
+The ACS PUMS data is a weighted sample and that complicates plotting. `PUMSutils` includes functions for making quick plots using the sample weights. See the vignette for more on plotting.
+
+    vignette("PlottingPUMS")
+
 For other functions, see the package docs.
 
 ### Installation

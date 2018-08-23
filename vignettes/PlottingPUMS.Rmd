@@ -1,0 +1,85 @@
+---
+title: "Plotting PUMS data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Plotting PUMS data}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+library(dplyr)
+library(ggplot2)
+library(PUMSutils)
+```
+
+This is a short introduction to plotting results for the ACS PUMS data with ggplot2 and PUMSutils.
+The main issue in plotting results drawn from the ACS PUMS data is that it is *weighted* sample.
+Each row represents a different number of cases in the population, indicated by the expansion weight (WGTP or PWGTP), and any correct calculation of a statistic has to use the expansion weights. There are basically 3 ways to proceed: 
+
+1. Some ggplot2 ojects take a `weight` aesthetic that can be set to WGTP or PWGTP.
+2. PUMSutils has convenience functions for plotting. These set the `weight` aesthetic appropriately.
+3. PUMSutils can be used to produce weighted statistics, which can then be plotted with `geom_col`.
+
+We discuss each of these in turn. The data used in all plots is 1-year 2016 ACS data for Washington State.
+
+## Using the weight aesthetic in ggplot2
+
+The first approach is to use ggplot, and set the `weight` aesthetic directly like this:
+
+```{r ggplotting}
+wa.house16$Tenure <- own.rent(wa.house16)
+ggplot(wa.house16, aes(Tenure)) + geom_bar(aes(weight=WGTP))
+```
+
+Only some plot types accept a weight aesthetic. It can only be used for counts. And the feature is a little under-documented. For more details, see the [ggplot docs](https://ggplot2.tidyverse.org/index.html).
+
+## PUMSutils convenience plotting functions
+
+PUMSutils has convenience functions for plotting that cover some common cases. The functions take the most common labels as optional arguments. 
+The acs.barchart function can produce barcharts of weighted count data. The plot above would be produced like this:
+
+```{r pumsutils.plotting}
+acs.barchart(wa.house16, 'Tenure', title='HH count by Tenure')
+```
+
+If you want to partition data on 2 variables, you can get a stacked barchart with acs.barchart by setting the `stack` argument. Below we chart employment status by gender.
+
+```{r stacked.acs.barchart, fig.width=6}
+wa.pop16$sex <- acs.recode(wa.pop16, 'SEX', data.dict16)
+wa.pop16$Employment <- acs.recode(wa.pop16, 'ESR', data.dict16)
+acs.barchart(wa.pop16, 'sex', stack='Employment', 
+             title = 'Employment Status by Gender',
+             xlab='Gender')
+```
+
+PUMSutils also includes acs.boxplot for producing weighted boxplots of the distribution of a numeric variable within categories. Here we plot the distribution of household income as a function of the number of workers in the household.
+
+```{r acs.boxplot, warning=FALSE, message=FALSE, fig.width=5}
+# ESR is employment status; 1,2,4,5 are employed
+# match.count counts the number of people per household matching a condition
+wa.house16$num.work <- match.count(wa.house16, wa.pop16, ESR %in% c(1,2,4,5))
+wa.house16$num.work <- clip.column(wa.house16, 'num.work', 4)
+wa.house16$inc.clip <- pmin(wa.house16$HINCP, 300000)
+acs.boxplot(wa.house16[!is.na(wa.house16$HINCP),], 
+            'num.work', 'inc.clip', 
+            title='HH Income vs Number of Workers', 
+            xlab='Number of Workers (max 4)', 
+            ylab='HH Income($) (max $300K)')
+```
+
+Income variables have a lot of extreme outliers, so we clip income at 300,000.
+
+## Plot tabulated results with geom_col
+
+If PUMSutils is used to produce weighted statistics, then those can be plotted using geom_col or similar from ggplot. Here we make a barchart of the median income of households as a function of the number of workers in the household.
+
+```{r geom_col, fig.width=5}
+med.inc <- group.median(wa.house16, 'num.work', 'HINCP', 
+                        result.name = 'Median Income')
+g <- ggplot(med.inc) + geom_col(aes(num.work, Median.Income))
+g + ggtitle('Median HH Income vs. Number of Workers')
+```
+
+This is the only method that can plot weighted statistics other than counts.
