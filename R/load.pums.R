@@ -13,13 +13,21 @@
 #' @return data frame with ACS PUMS housing or population data from a csv file
 #'
 #' @export
-#'
 load.pums <- function(path){
-  pums <- readr::read_csv(path, col_types = readr::cols(RT='_', SERIALNO='c', .default='i'))
-  pums$ADJINC <- pums$ADJINC * 1e-6
-  if("ADJHSG" %in% names(pums)){
-    # This is housing data.
+  top <- readr::read_csv(path, col_types=readr::cols(.default = 'c'), n_max = 10)
+  if('SEX' %in% names(top)){
+    # ACS PUMS person record
+    pums <- readr::read_csv(path, col_types = readr::cols(RT='_', SERIALNO='c',
+                                                          NAICSP='c', SOCP='c',
+                                                          .default='i'))
+    pums$ADJINC <- pums$ADJINC * 1e-6
+  }else if('SERIALNO' %in% names(top)){
+    # ACS PUMS housing record
+    pums <- readr::read_csv(path, col_types = readr::cols(RT='_', SERIALNO='c', .default='i'))
+    pums$ADJINC <- pums$ADJINC * 1e-6
     pums$ADJHSG <- pums$ADJHSG * 1e-6
+  }else{
+    stop('This does not appear to be an ACS PUMS dataset.')
   }
   pums
 }
