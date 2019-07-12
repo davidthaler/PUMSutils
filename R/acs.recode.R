@@ -2,7 +2,7 @@
 #'
 #' In the ACS PUMS data, many fields are integer-coded categoricals.
 #' There is a data dictionary (a text document) that describes the mapping
-#' from integers to level definitions. Function \code{rename.levels} takes
+#' from integers to level definitions. Function \code{acs.recode} takes
 #' the data dicitonary as a string and uses it to construct a factor variable
 #' that recodes integer levels to the text definitions given in the data
 #' dictionary.
