@@ -34,6 +34,8 @@ acs.describe <- function(dd, field, max.len=-1){
   a <- sapply(parts, function(x) x[1])
   b <- sapply(parts, function(x) x[2])
   b <- str_sub(b, end=max.len)
+  # Integer-coded categoricals have numeric Levels.Level in output
+  # Numeric variables have character levels s.t. 02..20 possible
   if(sniff.numeric(chunk.lines)){
     a <- str_replace(a, '^b+', 'NA')
   }else{

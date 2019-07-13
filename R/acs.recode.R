@@ -22,6 +22,10 @@
 #' @export
 acs.recode <- function(x, field, dd, max.len=-1){
   field.desc <- acs.describe(dd, field, max.len=max.len)
+  if(length(unique(field.desc$Levels$Level)) !=
+     length(unique(field.desc$Levels$Level.Desc))){
+    stop('Field names not unique after truncation to ', max.len)
+  }
   if(is.character(field.desc$Levels$Level)){
     stop(field, ' is not categorical; cannot recode')
   }
