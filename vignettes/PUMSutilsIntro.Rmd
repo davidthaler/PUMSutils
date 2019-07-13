@@ -101,7 +101,7 @@ These can be rewritten automatically using the data dictionary and `acs.recode`.
 Here we compute counts of Washington residents by employment status from `wa.pop16`, which contains partial ACS PUMS population data for Washington State for 2016.
 
 ```{r recode}
-wa.pop16$employment <- acs.recode(wa.pop16, 'ESR', data.dict16, 40)
+wa.pop16$employment <- acs.recode(wa.pop16, 'ESR', data.dict16, 5)
 group.count(wa.pop16, 'employment')
 ```
 

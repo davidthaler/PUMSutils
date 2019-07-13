@@ -72,3 +72,25 @@ sniff.numeric <- function(ex.field){
   any(str_detect(ex.field, pat))
 }
 
+#' Truncate each element of character vector to max number of words.
+#' Used to truncate level descriptions from data dictionary.
+#'
+#' @importFrom stringr str_split
+#' @importFrom stringi stri_c_list
+#'
+#' @noRd
+#'
+#' @param x input character vector
+#' @param max.len max number of words in output elements
+#'
+#' @return x, with each element truncated to at most max.len words
+word.cut <- function(x, max.len=NULL){
+  if (!is.null(max.len)){
+    word.list <- str_split(x, '[:blank:]+')
+    word.list <- lapply(word.list, function(x) x[1:min(max.len, length(x))])
+    out <- stri_c_list(word.list, sep=" ")
+  }else{
+    out <- x
+  }
+  out
+}

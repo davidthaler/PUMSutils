@@ -20,7 +20,7 @@
 #' group.count(wa.pop16, 'employment')
 #'
 #' @export
-acs.recode <- function(x, field, dd, max.len=-1){
+acs.recode <- function(x, field, dd, max.len=NULL){
   field.desc <- acs.describe(dd, field, max.len=max.len)
   if(length(unique(field.desc$Levels$Level)) !=
      length(unique(field.desc$Levels$Level.Desc))){

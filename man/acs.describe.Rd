@@ -4,14 +4,14 @@
 \alias{acs.describe}
 \title{Describe a field in the ACS PUMS data}
 \usage{
-acs.describe(dd, field, max.len = -1)
+acs.describe(dd, field, max.len = NULL)
 }
 \arguments{
 \item{dd}{the data dict as a string}
 
 \item{field}{the ACS column name to extract}
 
-\item{max.len}{max length of description in characters, default is all}
+\item{max.len}{max length of description in words, default is all}
 }
 \value{
 list with column name and description, levels and their definitions
